@@ -5,63 +5,17 @@ programa
 	inclua biblioteca Texto --> txt
 	inclua biblioteca Util --> u
 
-	funcao inicio(){
+	logico verificador = falso, x = verdadeiro
+	cadeia logar, usuario, password, sair
 
-		cadeia logar, usuario, password, sair
-		logico verificador = falso, x = verdadeiro
+	funcao inicio(){	
 		
 		//criar Logo da loja
 
 		logo()
 		u.aguarde(1500)
 
-		//Deseja entrar na loja? S/N
-
-		escreva("\n\nDeseja efetuar o login na Loja? (sim/não)\n")
-		leia(logar)
-		logar = txt.caixa_baixa(logar)
-
-		//verifica se logar é diferente de sim ou não
-		se(logar != "sim"){
-			escreva("Opção inválida! só é aceita respostas de sim ou não!")
-			u.aguarde(2000)
-			limpa()
-			inicio()
-		}
-				
-		//a. caso sim: Login
-
-		se(logar == "sim"){
-			limpa()
-			escreva("Digite seu usuario: ")
-			leia(usuario)
-			escreva("Digite sua senha: ")
-			leia(password)
-			limpa()
-			escreva("Deseja continuar? (sim/não)\n")
-			leia(sair)
-
-			//trocar para escolha caso, com escolha de voltar ao menu
-			se(sair == "sim"){
-				pare
-			}
-			senao{	
-				//Chama a funcao login
-				verificador = login(usuario, password)
-				se(verificador == falso){
-					inicio()
-				}
-			}
-		}
-
-		//caso não: dispara uma mensagem tipo “Volte sempre que desejar!”
-		se(logar == "não" ou logar == "n"){
-			limpa()
-			escreva("Volte sempre que desejar!")
-			u.aguarde(2000)
-			limpa()
-			verificador = falso
-		}
+		menuLogin()
 
 		enquanto(verificador == verdadeiro){
 			escreva("deu certo!")
@@ -172,6 +126,56 @@ programa
 		}
 	}
 
+	funcao menuLogin(){
+		//Deseja entrar na loja? S/N
+
+		escreva("\n\nDeseja efetuar o login na Loja? (sim/não)\n")
+		leia(logar)
+		logar = txt.caixa_baixa(logar)
+
+		//verifica se logar é diferente de sim ou não
+		se(logar != "sim"){
+			escreva("Opção inválida! só é aceita respostas de sim ou não!")
+			u.aguarde(2000)
+			limpa()
+			inicio()
+		}
+				
+		//a. caso sim: Login
+
+		se(logar == "sim"){
+			limpa()
+			escreva("Digite seu usuario: ")
+			leia(usuario)
+			escreva("Digite sua senha: ")
+			leia(password)
+			limpa()
+			escreva("Deseja continuar? (sim/não)\n")
+			leia(sair)
+
+			//trocar para escolha caso, com escolha de voltar ao menu
+			/*se(sair == "sim"){
+				pare
+			}
+			senao{*/	
+				//Chama a funcao login
+				verificador = login(usuario, password)
+				se(verificador == falso){
+					inicio()
+				//}
+			}
+		}
+
+		//caso não: dispara uma mensagem tipo “Volte sempre que desejar!”
+		se(logar == "não" ou logar == "n"){
+			limpa()
+			escreva("Volte sempre que desejar!")
+			u.aguarde(2000)
+			limpa()
+			verificador = falso
+		}
+	}
+
 	funcao logico login(cadeia usuario, cadeia password){
 
 		logico logado = falso
@@ -217,9 +221,9 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 899; 
+ * @POSICAO-CURSOR = 177; 
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {logar, 10, 9, 5};
+ * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
