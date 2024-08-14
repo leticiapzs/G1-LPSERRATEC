@@ -16,6 +16,7 @@ programa
 		u.aguarde(1500)
 
 		menuLogin()
+		menuPrincipal()
 
 		enquanto(verificador == verdadeiro){
 			escreva("deu certo!")
@@ -213,7 +214,30 @@ programa
 			limpa()
 			logado = falso
           	retorne logado	
-	}	
+	}
+
+		/*3. Menu (Organizado e criativo)
+			a. Nome do usuário logado;
+			b. Lista as categorias;
+			c. Após escolher a categoria, exibe os produtos;
+			d. Opção de sair caso o usuário não deseje mais
+				acessar o sistema (retorna para a tela de login);
+			e. Um tratamento de erro no menu.*/
+
+		funcao menuPrincipal() {
+
+			inteiro opcao
+
+			escreva("Olá, é ótimo ter você de volta! ♡\nSeja bem-vindo(a) ", usuario, " ao CatCafé, a nossa cafeteria onde você sentirá como um gato! Com miados e ronronos são liberados. Carinhos e o sabor se encontram.\n\n")
+			u.aguarde(2000)
+			escreva("Miau! O que você acha de dar uma olhadinha no nosso miaudápio?\n\n")
+			u.aguarde(2000)
+			escreva("1. Miaudápio.\n2. Sair\n\n")
+			
+			
+
+			
+			}
 		
 }
 /* $$$ Portugol Studio $$$ 
@@ -221,7 +245,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 177; 
+ * @POSICAO-CURSOR = 5312; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
