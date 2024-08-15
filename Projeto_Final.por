@@ -276,6 +276,8 @@ programa
 		u.aguarde(2000)
 		escreva("Miau! O que você acha de dar uma olhadinha nas opções?\n\n")
 		u.aguarde(2000)
+
+		
 		escreva("1. Adicione um novo usuario.\n2. altere um usuario existente\n3. Exclua um usuario\n4. Sair\n\n")
 		leia(opcao)
 				
@@ -302,7 +304,14 @@ programa
 		//Menu Principal 
 		funcao menuPrincipal() {
 
-			inteiro opcao, opcao1
+			inteiro opcao, opcao1, opcao2, x = 0
+			cadeia matrizProdutos[6][4] = {{"Café gato preto", 			"10.99", 	"8", 	"Um expresso intenso e encorpado, tão misterioso quanto um gato preto"}, 
+									{"Cappuccino Gatinho de Espuma", 	"4.99", 	"5", 	"Cappuccino suave com espuma extra fofa, decorado com orelhinhas de gato de canela"}, 
+									{"Smoothie Gatinho Tropical", 	"13.99", 	"10", 	"Mix de frutas tropicais, como manga, abacaxi e maracujá, com um toque de leite de coco"}, 
+									{"Muffin Meowberry" ,			"8.99", 	"20", 	"Muffin de mirtilo com um toque de limão, servido quentinho"}, 
+									{"Cookie Pata de Gato", 			"8.99", 	"20", 	"Cookie de chocolate com pedaços de chocolate branco, moldado em formato de pata de gato"}, 
+									{"Bolo Gata Mansa", 			"8.99", 	"20", 	"Bolo de baunilha com recheio de creme de leite e cobertura de chantilly"}}
+			
 
 			escreva("Olá, é ótimo ter você de volta! ♡\nSeja bem-vindo(a) ", usuario, " ao CatCafé, a nossa cafeteria ")
 			escreva("onde você sentirá como um gato!\nCom miados e ronronos são liberados. Carinhos e o sabor se encontram.\n\n")
@@ -321,10 +330,24 @@ programa
 					leia(opcao1)
 
 					se(opcao1 == 1){
-						bebidas(opcao1)
+						limpa()
+						//menu
+						para(inteiro i = 0; i < 3 ; i++){
+							escreva(x++, ".", matrizProdutos[i][0], "\n")
+						}
+						escreva("\nEscreva a opcao que você deseja: \n")
+						leia(opcao2)
+						bebidas(opcao2)
 					}
 					se(opcao1 == 2){
-						comidas(opcao1)
+						limpa()
+						//menu
+						para(inteiro i = 3; i < 6 ; i++){
+							escreva(x++, ".", matrizProdutos[i][0], "\n")
+						}
+						escreva("\nEscreva a opcao que você deseja: \n")
+						leia(opcao2)
+						comidas(opcao2)
 					}
 					pare
 				caso 2:
@@ -347,7 +370,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 8677; 
+ * @POSICAO-CURSOR = 8279; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
