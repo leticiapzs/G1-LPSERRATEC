@@ -7,28 +7,18 @@ programa
 	inclua biblioteca Tipos --> ti
 
 	cadeia logar, usuario, password
-	logico verificador = falso
-	inteiro sair
+	logico verificador = falso, isAdmin = falso
 
 	funcao inicio(){
 		logo()
 		menuLogin()
 
 		enquanto(verificador == verdadeiro){
-			//cria Logo da loja
 				
 			menuPrincipal()
 	
-			escreva("Deu certo!!!")
+			escreva("Deu certo!!!")			
 	
-			//c. Um tratamento de erro no login.				
-	
-			//Menu (Organizado e criativo)				
-		
-			//a. Nome do usuário logado;			
-				
-			//b. Lista as categorias;				
-				
 			//c. Após escolher a categoria, exibe os produtos;
 				
 			//d. Opção de sair caso o usuário não deseje mais acessar o sistema (retorna para a tela de login);
@@ -156,8 +146,9 @@ programa
 	}
 
 	funcao menuLogin(){
+		inteiro sair
+		
 		//Deseja entrar na loja? S/N
-
 		escreva("\nDeseja efetuar o login na Loja? (sim/nao)\n")
 		leia(logar)
 		logar = txt.caixa_baixa(logar)
@@ -180,7 +171,7 @@ programa
 			escreva("Digite sua senha: ")
 			leia(password)
 			limpa()
-			escreva("Deseja continuar?\nOpção 1 = sim\nOpção 2 = nao\nOpção 3 = voltar ao menu\n\n")
+			escreva("Deseja continuar?\nEscolha 1 (sim)\nEscolha 2 (não)\nEscolha 3 (voltar ao menu)\n\n")
 			leia(sair)
 
 			escolha(sair){
@@ -195,7 +186,7 @@ programa
 					escreva("...")
 					u.aguarde(1000)
 					//Chama a funcao login
-					verificador = login(usuario, password)
+					verificador = login(usuario, password, isAdmin)
 					pare
 
 				caso 2:
@@ -229,13 +220,13 @@ programa
 		}
 	}
 
-	funcao logico login(cadeia usuario, cadeia password){
+	funcao logico login(cadeia usuario, cadeia password, logico isAdmin){
 
 		logico logado = falso
-		cadeia vetor[][] = {{"Lucas", "1234"}, {"Lorrayne","2345"}, {"Leticia", "3456"}, {"Yuri","4567"}, {"Frederico","5678"}}
-
+		cadeia vetor[5][3] = {{"Lucas", "1234", "verdadeiro"}, {"Lorrayne","2345", "verdadeiro"},
+		{"Leticia", "3456", "falso"}, {"Yuri","4567", "falso"}, {"Frederico","5678", "falso"}}
+		
 		// Converte os nomes dos usuários e do usuario querendo se conectar para caixa baixa
-
 		usuario = txt.caixa_baixa(usuario)
     		para(inteiro i = 0; i < 5; i++){
         		vetor[i][0] = txt.caixa_baixa(vetor[i][0])
@@ -252,8 +243,15 @@ programa
           		escreva("Usuario logado com sucesso!")
           		u.aguarde(2500)    		
           		limpa()
-          		logado = verdadeiro
-          		retorne logado
+				se(vetor[i][2] == "verdadeiro"){
+					isAdmin = verdadeiro
+					menuAdmin()
+					retorne falso
+				}
+				senao{
+					isAdmin = falso
+					retorne verdadeiro
+				}
         		}
     		}
     			//Caso não tenha usuario cadastrado
@@ -264,13 +262,47 @@ programa
 			escreva("Usuario ou senha incorretos, tente novamente!")
 			u.aguarde(3000)
 			limpa()
-			logado = falso
-          	retorne logado	
+			menuLogin()
+			retorne falso
 	}
+
+	funcao menuAdmin(){
+		
+		inteiro opcao
+		logico logado
+
+		escreva("Olá Admin, é ótimo ter você de volta! ♡\nSeja bem-vindo(a) ", usuario)
+		escreva("\nAqui você realizar diversas tarefas como adiministrador.\n\n")
+		u.aguarde(2000)
+		escreva("Miau! O que você acha de dar uma olhadinha nas opções?\n\n")
+		u.aguarde(2000)
+		escreva("1. Adicione um novo usuario.\n2. altere um usuario existente\n3. Exclua um usuario\n4. Sair\n\n")
+		leia(opcao)
+				
+		//Exibe as opções
+		escolha(opcao){
+			caso 1:
+				limpa()
+				escreva("\t1. Teste de adicionar usuario\n\n")
+				pare
+			caso 2:
+				escreva("\t2. Teste de alterar usuario existente\n\n")
+				pare
+			caso 3:
+				escreva("\t2. Teste de excluir usuario existente\n\n")
+				pare
+			caso 4:
+				escreva("\nsaindo...")
+				u.aguarde(1000)
+				limpa()
+				pare
+		}
+	}
+	
 		//Menu Principal 
 		funcao menuPrincipal() {
 
-			inteiro opcao
+			inteiro opcao, opcao1
 
 			escreva("Olá, é ótimo ter você de volta! ♡\nSeja bem-vindo(a) ", usuario, " ao CatCafé, a nossa cafeteria ")
 			escreva("onde você sentirá como um gato!\nCom miados e ronronos são liberados. Carinhos e o sabor se encontram.\n\n")
@@ -284,21 +316,29 @@ programa
 			//Opção das categorias, exibe os produtos e retorna ao menu de login
 			escolha(opcao){
 				caso 1:
-					escreva("\t1. Bebidas\n")
-						bebidas()
+					escreva("\t1. Bebidas\n")	
 					escreva("\t2. Comidas\n\n")
-						comidas()
+					leia(opcao1)
+
+					se(opcao1 == 1){
+						bebidas(opcao1)
+					}
+					se(opcao1 == 2){
+						comidas(opcao1)
+					}
 					pare
 				caso 2:
 					menuLogin()
 					pare
 			}
 		}
-		funcao bebidas(){
-			
+		funcao bebidas(inteiro opcao){
+			limpa()
+			escreva("funcao bebidas em funcionamento\n\n")
 		}
-		funcao comidas(){
-			
+		funcao comidas(inteiro opcao){
+			limpa()
+			escreva("funcao comidas em funcionamento\n\n")
 		}
 		
 }
@@ -307,8 +347,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 7534; 
- * @DOBRAMENTO-CODIGO = [246];
+ * @POSICAO-CURSOR = 8677; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
