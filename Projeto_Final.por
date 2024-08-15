@@ -288,9 +288,13 @@ programa
 				caso 1:
 					escreva("\t1. Bebidas\n")
 				caso 2:
-					escreva("\t2. Comidas\n")
+					escreva("\t2. Comidas\n\n")
 					pare
 			}
+			//Escolha das categorias
+			escreva("Escolha uma das opções para ter acesso aos nossos produtos. ")
+			leia(opcao)
+			
 			
 
 			
@@ -302,7 +306,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 7457; 
+ * @POSICAO-CURSOR = 7492; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = {logar, 9, 8, 5}-{verificador, 10, 8, 11}-{sair, 11, 9, 4};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
