@@ -267,15 +267,7 @@ programa
 			logado = falso
           	retorne logado	
 	}
-
-		/*3. Menu (Organizado e criativo)
-			a. Nome do usuário logado;
-			b. Lista as categorias;
-			c. Após escolher a categoria, exibe os produtos;
-			d. Opção de sair caso o usuário não deseje mais
-				acessar o sistema (retorna para a tela de login);
-			e. Um tratamento de erro no menu.*/
-
+		//Menu Principal 
 		funcao menuPrincipal() {
 
 			inteiro opcao
@@ -286,7 +278,19 @@ programa
 			escreva("Miau! O que você acha de dar uma olhadinha no nosso miaudápio?\n\n")
 			u.aguarde(2000)
 			escreva("1. Miaudápio.\n2. Sair\n\n")
+			leia(opcao)
 			
+			//Exibe as categorias
+			se(opcao ==1){
+				escreva("\tCategorias\n\n")
+			}
+			escolha(opcao){
+				caso 1:
+					escreva("\t1. Bebidas\n")
+				caso 2:
+					escreva("\t2. Comidas\n")
+					pare
+			}
 			
 
 			
@@ -298,7 +302,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 4722; 
+ * @POSICAO-CURSOR = 7457; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = {logar, 9, 8, 5}-{verificador, 10, 8, 11}-{sair, 11, 9, 4};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
