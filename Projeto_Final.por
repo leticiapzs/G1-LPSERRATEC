@@ -277,28 +277,29 @@ programa
 			u.aguarde(2000)
 			escreva("Miau! O que você acha de dar uma olhadinha no nosso miaudápio?\n\n")
 			u.aguarde(2000)
-			escreva("1. Miaudápio.\n2. Sair\n\n")
+			escreva("1. Miaudápio.\n2. Retornar ao login\n\n")
 			leia(opcao)
+			limpa()
 			
-			//Exibe as categorias
-			se(opcao ==1){
-				escreva("\tCategorias\n\n")
-			}
+			//Opção das categorias, exibe os produtos e retorna ao menu de login
 			escolha(opcao){
 				caso 1:
 					escreva("\t1. Bebidas\n")
-				caso 2:
+						bebidas()
 					escreva("\t2. Comidas\n\n")
+						comidas()
+					pare
+				caso 2:
+					menuLogin()
 					pare
 			}
-			//Escolha das categorias
-			escreva("Escolha uma das opções para ter acesso aos nossos produtos. ")
-			leia(opcao)
+		}
+		funcao bebidas(){
 			
+		}
+		funcao comidas(){
 			
-
-			
-			}
+		}
 		
 }
 /* $$$ Portugol Studio $$$ 
@@ -306,9 +307,10 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 7492; 
+ * @POSICAO-CURSOR = 7534; 
+ * @DOBRAMENTO-CODIGO = [246];
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {logar, 9, 8, 5}-{verificador, 10, 8, 11}-{sair, 11, 9, 4};
+ * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
