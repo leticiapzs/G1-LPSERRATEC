@@ -5,6 +5,8 @@ programa
 	inclua biblioteca Texto --> txt
 	inclua biblioteca Util --> u
 	inclua biblioteca Tipos --> ti
+	inclua biblioteca Graficos --> g
+	inclua biblioteca Teclado --> t
 
 	cadeia logar, usuario, password
 	logico verificador = falso, isAdmin = falso
@@ -337,7 +339,7 @@ programa
 						}
 						escreva("\nEscreva a opcao que você deseja: \n")
 						leia(opcao2)
-						bebidas(opcao2)
+						bebida(opcao2)
 					}
 					se(opcao1 == 2){
 						limpa()
@@ -347,7 +349,7 @@ programa
 						}
 						escreva("\nEscreva a opcao que você deseja: \n")
 						leia(opcao2)
-						comidas(opcao2)
+						comida(opcao2)
 					}
 					pare
 				caso 2:
@@ -355,22 +357,82 @@ programa
 					pare
 			}
 		}
-		funcao bebidas(inteiro opcao){
+		funcao bebida(inteiro opcao){
 			limpa()
 			escreva("funcao bebidas em funcionamento\n\n")
 		}
-		funcao comidas(inteiro opcao){
-			limpa()
-			escreva("funcao comidas em funcionamento\n\n")
+
+		funcao comida(inteiro opcao){
+				escolha (opcao){
+					caso 1:
+				
+						inteiro gataMansa = -1
+						inteiro temp	
+						cadeia opcaoUsuario
+						inteiro carrinho = 0
+		
+						// Inicia o modo gráfico e define as dimensões da janela
+						g.iniciar_modo_grafico(verdadeiro)
+						g.definir_dimensoes_janela(300, 300)
+						
+						// Carrega a imagem do produto
+						gataMansa = g.carregar_imagem("gataMansa.jpg")
+						
+						// Dados do produto
+						cadeia nomeProduto = "Bolo Gata Mansa"
+						real precoProduto = 8.00
+						cadeia descricaoProduto = "Bolo de baunilha com recheio de creme de leite e cobertura de chantilly,\n\t\t    decorado com orelhinhas de chocolate. Delicado e irresistível.\n"
+				
+						// Exibe os dados no console enquanto a imagem está aberta
+						escreva("\n┎┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┒\n")
+						escreva("\tNome:      ", nomeProduto, "\n\n")
+						escreva("\tPreço:     R$ ", precoProduto, "\n\n")
+						escreva("\tDescrição: ", descricaoProduto, "\n")
+						escreva("\n┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┚\n")
+				enquanto(verdadeiro)
+						{
+							// Limpa a tela e desenha a imagem
+							g.definir_cor(g.COR_BRANCO)
+							g.limpar()
+							g.desenhar_imagem(0, 0, gataMansa)
+							g.renderizar()
+							
+							// decisão do usuário
+							escreva("\n   Deseja adicionar o produto ao carrinho ou voltar ao menu inicial? \n\t(digite '1 para adicionar' ou '2 para voltar ao menu')\n")
+							leia(opcaoUsuario)
+							
+							// Tomada de decisão
+							se (opcaoUsuario == "1")
+							{
+								carrinho = carrinho + 1
+								escreva("Produto adicionado ao carrinho. Total no carrinho: ", carrinho, "\n")
+								//cod carrinho
+							}
+							senao se (opcaoUsuario == "2")
+							{
+								escreva("Voltando ao menu inicial...\n")
+								u.aguarde(2000)
+								menuPrincipal()
+								// cod para voltar ao menu inicial
+								pare
+							}
+							senao
+							{
+								escreva("Opção inválida, tente novamente.\n")
+							}
+							
+						}
+				
 		}
 		
+	}
 }
 /* $$$ Portugol Studio $$$ 
  * 
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 8279; 
+ * @POSICAO-CURSOR = 11800; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
