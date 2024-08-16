@@ -5,6 +5,8 @@ programa
 	inclua biblioteca Texto --> txt
 	inclua biblioteca Util --> u
 	inclua biblioteca Tipos --> ti
+	inclua biblioteca Graficos --> g
+	inclua biblioteca Teclado --> t
 
 	cadeia logar, usuario, password
 	logico verificador = falso, isAdmin = falso
@@ -356,21 +358,335 @@ programa
 			}
 		}
 		funcao bebidas(inteiro opcao){
-			limpa()
-			escreva("funcao bebidas em funcionamento\n\n")
+			inteiro temp	
+			cadeia opcaoUsuario
+			inteiro carrinho = 0
+			escolha (opcao){
+				caso 1:
+			
+					inteiro gatoPreto = -1
+					
+	
+					// Inicia o modo gráfico e define as dimensões da janela
+					g.iniciar_modo_grafico(verdadeiro)
+					g.definir_dimensoes_janela(300, 300)
+					
+					// Carrega a imagem do produto
+					gatoPreto = g.carregar_imagem("gatoPreto.jpg")
+			
+					// Exibe os dados no console enquanto a imagem está aberta
+					escreva("\n┎┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┒\n")
+					escreva("\tNome:      Café Gato Preto\n\n")
+					escreva("\tPreço:     R$9.00\n\n")
+					escreva("\tDescrição: Um Expresso intenso e encorpaddo,\n\t\t    tão misterioso quanto um gato preto.\n\t\t    Ideal para quem aprecia um café forte e marcante\n")
+					escreva("\n┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┚\n")
+					// Loop principal para renderizar a imagem e capturar a decisão do usuário
+					enquanto(verdadeiro)
+					{
+						// Limpa a tela e desenha a imagem
+						g.definir_cor(g.COR_BRANCO)
+						g.limpar()
+						g.desenhar_imagem(0, 0, gatoPreto)
+						g.renderizar()
+						
+						// decisão do usuário
+						escreva("\n   Deseja adicionar o produto ao carrinho ou voltar ao menu inicial? \n\t(digite '1 para adicionar' ou '2 para voltar ao menu')\n")
+						leia(opcaoUsuario)
+						
+						// Tomada de decisão
+						se (opcaoUsuario == "1")
+						{
+							carrinho = carrinho + 1
+							escreva("Produto adicionado ao carrinho. Total no carrinho: ", carrinho, "\n")
+							//cod carrinho
+						}
+						senao se (opcaoUsuario == "2")
+						{
+							escreva("Voltando ao menu inicial...\n")
+							u.aguarde(2000)
+							// cod para voltar ao menu inicial
+							pare
+						}
+						senao
+						{
+							escreva("Opção inválida, tente novamente.\n")
+						}
+					}
+				caso 2:
+			
+					inteiro gatinhoTropical = -1
+	
+					// Inicia o modo gráfico e define as dimensões da janela
+					g.iniciar_modo_grafico(verdadeiro)
+					g.definir_dimensoes_janela(300, 300)
+					
+					// Carrega a imagem do produto
+					gatinhoTropical = g.carregar_imagem("gatinhoTropical.jpg")
+			
+					// Exibe os dados no console enquanto a imagem está aberta
+					escreva("\n┎┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┒\n")
+					escreva("\tNome:      Smoothie Gatinho Tropical\n\n")
+					escreva("\tPreço:     R$12.00\n\n")
+					escreva("\tDescrição: Mix de frutas tropicais, como manga, abacaxi e maracujá\n\t\t    com um toque de leite de coco. Refrescante e cheio de sabor, como um dia ensolarado.\n")
+					escreva("\n┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┚\n")
+					// Loop principal para renderizar a imagem e capturar a decisão do usuário
+					enquanto(verdadeiro)
+					{
+						// Limpa a tela e desenha a imagem
+						g.definir_cor(g.COR_BRANCO)
+						g.limpar()
+						g.desenhar_imagem(0, 0, gatinhoTropical)
+						g.renderizar()
+						
+						// decisão do usuário
+						escreva("\n   Deseja adicionar o produto ao carrinho ou voltar ao menu inicial? \n\t(digite '1 para adicionar' ou '2 para voltar ao menu')\n")
+						leia(opcaoUsuario)
+						
+						// Tomada de decisão
+						se (opcaoUsuario == "1")
+						{
+							carrinho = carrinho + 1
+							escreva("Produto adicionado ao carrinho. Total no carrinho: ", carrinho, "\n")
+							//cod carrinho
+						}
+						senao se (opcaoUsuario == "2")
+						{
+							escreva("Voltando ao menu inicial...\n")
+							u.aguarde(2000)
+							// cod para voltar ao menu inicial
+							pare
+						}
+						senao
+						{
+							escreva("Opção inválida, tente novamente.\n")
+						}
+					}
+				caso 3:
+			
+					inteiro GatinhoDeespuma = -1						
+	
+					// Inicia o modo gráfico e define as dimensões da janela
+					g.iniciar_modo_grafico(verdadeiro)
+					g.definir_dimensoes_janela(300, 300)
+					
+					// Carrega a imagem do produto
+					GatinhoDeespuma = g.carregar_imagem("GatinhoDeespuma.jpg")
+			
+					// Exibe os dados no console enquanto a imagem está aberta
+					escreva("\n┎┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┒\n")
+					escreva("\tNome:      Smoothie Gatinho Tropical\n\n")
+					escreva("\tPreço:     7.00\n\n")
+					escreva("\tDescrição: Cappuccino suave com espuma extra fofa, decorado com orelhinhas de gato de canela. Perfeito para aquecer o coração.\n")
+					escreva("\n┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┚\n")
+					// Loop principal para renderizar a imagem e capturar a decisão do usuário
+					enquanto(verdadeiro)
+					{
+						// Limpa a tela e desenha a imagem
+						g.definir_cor(g.COR_BRANCO)
+						g.limpar()
+						g.desenhar_imagem(0, 0, GatinhoDeespuma)
+						g.renderizar()
+						
+						// decisão do usuário
+						escreva("\n   Deseja adicionar o produto ao carrinho ou voltar ao menu inicial? \n\t(digite '1 para adicionar' ou '2 para voltar ao menu')\n")
+						leia(opcaoUsuario)
+						
+						// Tomada de decisão
+						se (opcaoUsuario == "1")
+						{
+							carrinho = carrinho + 1
+							escreva("Produto adicionado ao carrinho. Total no carrinho: ", carrinho, "\n")
+							//cod carrinho
+						}
+						senao se (opcaoUsuario == "2")
+						{
+							escreva("Voltando ao menu inicial...\n")
+							u.aguarde(2000)
+							// cod para voltar ao menu inicial
+								pare
+						}
+						senao
+						{
+							escreva("Opção inválida, tente novamente.\n")
+						}
+					}
+				caso contrario:
+					escreva("\nOpção inválida! Voltando ao menu")
+					menuPrincipal()
+					pare
+			}
 		}
 		funcao comidas(inteiro opcao){
-			limpa()
-			escreva("funcao comidas em funcionamento\n\n")
-		}
+			inteiro temp	
+			cadeia opcaoUsuario
+			inteiro carrinho = 0
+			escolha (opcao){
+				caso 1:				
+				inteiro gataMansa = -1
+						
 		
+				// Inicia o modo gráfico e define as dimensões da janela
+				g.iniciar_modo_grafico(verdadeiro)
+				g.definir_dimensoes_janela(300, 300)
+						
+				// Carrega a imagem do produto
+				gataMansa = g.carregar_imagem("gataMansa.jpg")
+						
+				// Dados do produto
+				cadeia nomeProduto = "Bolo Gata Mansa"
+				real precoProduto = 8.00
+				cadeia descricaoProduto = "Bolo de baunilha com recheio de creme de leite e cobertura de chantilly,\n\t\t    decorado com orelhinhas de chocolate. Delicado e irresistível.\n"
+				
+				// Exibe os dados no console enquanto a imagem está aberta
+				escreva("\n┎┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┒\n")
+				escreva("\tNome:      Bolo Gata Mansa\n\n")
+				escreva("\tPreço:     R$8.00\n\n")
+				escreva("\tDescrição: Bolo de baunilha com recheio de creme de leite e cobertura de chantilly,\n\t\t    decorado com orelhinhas de chocolate. Delicado e irresistível.\n\n")
+				escreva("\n┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┚\n")
+				// Loop principal para renderizar a imagem e capturar a decisão do usuário
+				enquanto(verdadeiro)
+				{
+				// Limpa a tela e desenha a imagem
+				g.definir_cor(g.COR_BRANCO)
+				g.limpar()
+				g.desenhar_imagem(0, 0, gataMansa)
+				g.renderizar()
+							
+				// decisão do usuário
+				escreva("\n   Deseja adicionar o produto ao carrinho ou voltar ao menu inicial? \n\t(digite '1 para adicionar' ou '2 para voltar ao menu')\n")
+				leia(opcaoUsuario)
+							
+					// Tomada de decisão
+					se (opcaoUsuario == "1")
+						{
+						carrinho = carrinho + 1
+						escreva("Produto adicionado ao carrinho. Total no carrinho: ", carrinho, "\n")
+						//cod carrinho
+						}
+					senao se (opcaoUsuario == "2")
+					{
+							escreva("Voltando ao menu inicial...\n")
+							u.aguarde(2000)
+							// cod para voltar ao menu inicial
+							pare
+					}
+					senao
+					{
+								escreva("Opção inválida, tente novamente.\n")
+					}
+				}
+					caso 2:
+				
+						inteiro PataDegato = -1	
+		
+						// Inicia o modo gráfico e define as dimensões da janela
+						g.iniciar_modo_grafico(verdadeiro)
+						g.definir_dimensoes_janela(300, 300)
+						
+						// Carrega a imagem do produto
+						PataDegato = g.carregar_imagem("PataDegato.jpg")
+						
+						// Exibe os dados no console enquanto a imagem está aberta
+						escreva("\n┎┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┒\n")
+						escreva("\tNome:      Cookie Pata de Gato\n\n")
+						escreva("\tPreço:     R$5.00 \n\n")
+						escreva("\tDescrição: Cookie de chocolate com pedaços de chocolate branco, moldado em formato de pata de gato\n\t\t    Crocante por fora e macio por dentro.")
+						escreva("\n┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┚\n")
+						// Loop principal para renderizar a imagem e capturar a decisão do usuário
+						enquanto(verdadeiro)
+						{
+							// Limpa a tela e desenha a imagem
+							g.definir_cor(g.COR_BRANCO)
+							g.limpar()
+							g.desenhar_imagem(0, 0, PataDegato)
+							g.renderizar()
+							
+							// decisão do usuário
+							escreva("\n   Deseja adicionar o produto ao carrinho ou voltar ao menu inicial? \n\t(digite '1 para adicionar' ou '2 para voltar ao menu')\n")
+							leia(opcaoUsuario)
+							
+							// Tomada de decisão
+							se (opcaoUsuario == "1")
+							{
+								carrinho = carrinho + 1
+								escreva("Produto adicionado ao carrinho. Total no carrinho: ", carrinho, "\n")
+								//cod carrinho
+							}
+							senao se (opcaoUsuario == "2")
+							{
+								escreva("Voltando ao menu inicial...\n")
+								u.aguarde(2000)
+								// cod para voltar ao menu inicial
+								pare
+							}
+							senao
+							{
+								escreva("Opção inválida, tente novamente.\n")
+							}
+						}
+					caso 3:
+				
+						inteiro Meowberry = -1	
+		
+						// Inicia o modo gráfico e define as dimensões da janela
+						g.iniciar_modo_grafico(verdadeiro)
+						g.definir_dimensoes_janela(300, 300)
+						
+						// Carrega a imagem do produto
+						Meowberry = g.carregar_imagem("Meowberry.jpg")
+				
+						// Exibe os dados no console enquanto a imagem está aberta
+						escreva("\n┎┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┒\n")
+						escreva("\tNome:      Smoothie Gatinho Tropical\n\n")
+						escreva("\tPreço:     R$7.00\n\n")
+						escreva("\tDescrição: Muffin de mirtilo com um toque de limão,\n  servido quentinho. Uma explosão de sabor a cada mordida\n")
+						escreva("\n┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┚\n")
+						// Loop principal para renderizar a imagem e capturar a decisão do usuário
+						enquanto(verdadeiro)
+						{
+							// Limpa a tela e desenha a imagem
+							g.definir_cor(g.COR_BRANCO)
+							g.limpar()
+							g.desenhar_imagem(0, 0, Meowberry)
+							g.renderizar()
+							
+							// decisão do usuário
+							escreva("\n   Deseja adicionar o produto ao carrinho ou voltar ao menu inicial? \n\t(digite '1 para adicionar' ou '2 para voltar ao menu')\n")
+							leia(opcaoUsuario)
+							
+							// Tomada de decisão
+							se (opcaoUsuario == "1")
+							{
+								carrinho = carrinho + 1
+								escreva("Produto adicionado ao carrinho. Total no carrinho: ", carrinho, "\n")
+								//cod carrinho
+							}
+							senao se (opcaoUsuario == "2")
+							{
+								escreva("Voltando ao menu inicial...\n")
+								u.aguarde(2000)
+								// cod para voltar ao menu inicial
+									pare
+							}
+							senao
+							{
+								escreva("Opção inválida, tente novamente.\n")
+							}
+						}
+					caso contrario:
+						escreva("\nOpção inválida! Voltando ao menu")
+						menuPrincipal()
+						pare
+				}
+		}
 }
 /* $$$ Portugol Studio $$$ 
  * 
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 8279; 
+ * @POSICAO-CURSOR = 9831; 
+ * @DOBRAMENTO-CODIGO = [13, 65, 149, 270, 306, 359, 518];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
