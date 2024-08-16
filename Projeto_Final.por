@@ -165,7 +165,7 @@ programa
 		//verifica se logar é diferente de sim ou não
 		se(logar != "sim"){
 			se(logar != "nao"){
-				escreva("Opção inválida! só é aceita respostas de sim ou nao!")
+				escreva("Opção inválida! Só é aceita respostas de sim ou nao!")
 				u.aguarde(2000)
 				limpa()
 				inicio()
@@ -175,12 +175,14 @@ programa
 		//a. caso sim: Login
 		se(logar == "sim"){
 			limpa()
-			escreva("Digite seu usuario: ")
+			escreva("Digite seu usuário: ")
 			leia(usuario)
 			escreva("Digite sua senha: ")
 			leia(password)
 			limpa()
-			escreva("Deseja continuar?\nTecle 1 para continuar.\nTecle 2 para sair.\nTecle 3 para retornar ao Menu.\n")
+			escreva("Deseja continuar?\n\nTecle 1 para continuar.\nTecle 2 para sair.\nTecle 3 para retornar ao Menu.\n\n")
+			u.aguarde(1000)
+			escreva("Escolha uma opção: ")
 			leia(sair)
 
 			escolha(sair){
@@ -247,7 +249,7 @@ programa
        			escreva("Aguarde enquanto efetuamos o Login!")
        			u.aguarde(2000)
        			limpa()
-          		escreva("Usuario logado com sucesso!")
+          		escreva("Usuário logado com sucesso!")
           		u.aguarde(2500)    		
           		limpa()
 				se(vetor[i][2] == "verdadeiro"){
@@ -280,14 +282,19 @@ programa
 		logico logado
 		cadeia novoUser, novoPassword, novoAdmin, opcao2
 
-		escreva("Olá Admin, é ótimo ter você de volta! ♡\nSeja bem-vindo(a) ", usuario)
-		escreva("\nAqui você realizar diversas tarefas como adiministrador.\n\n")
+		escreva("\t╔═══════.♡.═══════════════════════════════════════════════════════╗\n\n")
+		u.aguarde(1000)
+		escreva("\t\t\t♡ Olá Admin, é ótimo ter você de volta! ♡\n\n\n")
+		escreva("\t\t      Seja bem-vindo(a) ", usuario, ", aqui você realizará\n\n\t\t         diversas tarefas como adiministrador.\n\n")
 		u.aguarde(2000)
-		escreva("Miau! O que você acha de dar uma olhadinha nas opções?\n\n")
+		escreva("\t╚═══════════════════════════════════════════════════════.♡.═══════╝\n\n\n")
+		u.aguarde(1000)
+		escreva("\t\t\t\t\t^^ Miau! ^^\n\n\t\tO que você acha de dar uma olhadinha nas opções?\n\n\n")
 		u.aguarde(2000)
 
 		
-		escreva("1. Adicione um novo usuario.\n2. altere um usuario existente\n3. Exclua um usuario\n4. Sair\n\n")
+		escreva("1. Adicione um novo usuario.\n2. altere um usuario existente\n3. Exclua um usuario\n4. Sair.\n\n")
+		escreva("\nTecle um miaúmero que você deseja: ")
 		leia(opcao)
 		
 		//Exibe as opções
@@ -368,48 +375,76 @@ programa
 									{"Muffin Meowberry" ,			"8.99", 	"20", 	"Muffin de mirtilo com um toque de limão, servido quentinho"}, 
 									{"Cookie Pata de Gato", 			"8.99", 	"20", 	"Cookie de chocolate com pedaços de chocolate branco, moldado em formato de pata de gato"}, 
 									{"Bolo Gata Mansa", 			"8.99", 	"20", 	"Bolo de baunilha com recheio de creme de leite e cobertura de chantilly"}}
-			
 
-			escreva("Olá, é ótimo ter você de volta! ♡\nSeja bem-vindo(a) ", usuario, " ao CatCafé, a nossa cafeteria ")
-			escreva("onde você sentirá como um gato!\nCom miados e ronronos são liberados. Carinhos e o sabor se encontram.\n\n")
+			
+			escreva("\t╔═══════.♡.═══════════════════════════════════════════════════════╗\n\n")
+			u.aguarde(1000)
+			escreva("\t\t\t♡ Olá, é ótimo ter você de volta! ♡\n\n\n")
 			u.aguarde(2000)
-			escreva("Miau! O que você acha de dar uma olhadinha no nosso miaudápio?\n\n")
+			escreva("\t      Seja bem-vindo(a) " , usuario, ", ao CatCafé, a nossa cafeteria\n\t\t\tonde você se sentirá como um gato!\n\t\t     Miados e ronronos são liberados, carinhos\n\t\t\t     e o sabor se entrelaçam.\n\n")
+			u.aguarde(1000)
+			escreva("\t╚═══════════════════════════════════════════════════════.♡.═══════╝\n\n\n")
+			u.aguarde(8000)
+			escreva("\t\t\t\t\t^^ Miau! ^^\n\n\t\tO que você acha de dar uma olhadinha no nosso miaudápio?\n\n\n")
 			u.aguarde(2000)
-			escreva("1. Miaudápio.\n2. Retornar ao login\n\n")
+			escreva("\tTecle 1 para: Miaudápio.\n\tTecle 2 para: Sair.\n\n")
+			u.aguarde(1000)
+			escreva("Escolha: ")
 			leia(opcao)
 			limpa()
 			
 			//Opção das categorias, exibe os produtos e retorna ao menu de login
 			escolha(opcao){
 				caso 1:
-					escreva("\t1. Bebidas\n")	
-					escreva("\t2. Comidas\n\n")
+					escreva("\t\t\t||^~ Miaudápio! ~^||\n\n\n")
+					escreva("\t1. Bebidas.\n")	
+					escreva("\t2. Comidas.\n\n")
+					escreva("Escolha: ")
 					leia(opcao1)
 
 					se(opcao1 == 1){
 						limpa()
 						//menu
-						para(inteiro i = 0; i < 3 ; i++){
-							escreva(x++, ".", matrizProdutos[i][0], "\n")
+							escreva("\t\t\tMiautálogo: Bebidas\n\n\n")
+						para(inteiro i = 0; i < 3 ; i++) {
+							escreva(x++, ". ", matrizProdutos[i][0], ".\n")
 						}
-						escreva("\nEscreva a opcao que você deseja: \n")
+						escreva("\nTecle um miaúmero que você deseja: ")
 						leia(opcao2)
 						bebidas(opcao2)
+						
 					}
 					se(opcao1 == 2){
 						limpa()
 						//menu
-						para(inteiro i = 3; i < 6 ; i++){
-							escreva(x++, ".", matrizProdutos[i][0], "\n")
+							escreva("\t\t\tMiautálogo: Comidas\n\n\n")
+						para(inteiro i = 3; i < 6 ; i++) {
+							escreva(x++, ". ", matrizProdutos[i][0], ".\n")
 						}
-						escreva("\nEscreva a opcao que você deseja: \n")
+						escreva("\nTecle um miaúmero que você deseja: ")
 						leia(opcao2)
 						comidas(opcao2)
 					}
 					pare
 				caso 2:
 					menuLogin()
+					menuPrincipal()
 					pare
+				caso contrario:
+					
+					escreva("Miaúmero inválido")
+					u.aguarde(1000)
+					escreva(".")
+					u.aguarde(1000)
+					escreva(".")
+					u.aguarde(1000)
+					escreva(".")
+					u.aguarde(2000)
+					limpa()
+					escreva("Retornando ao Menu Principal!")
+					u.aguarde(1500)
+					limpa()
+					menuPrincipal()
 			}
 		}
 		funcao bebidas(inteiro opcao){
@@ -740,8 +775,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 506; 
- * @DOBRAMENTO-CODIGO = [20, 72, 361, 414, 573];
+ * @POSICAO-CURSOR = 7713; 
+ * @DOBRAMENTO-CODIGO = [20, 72, 449, 608];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
