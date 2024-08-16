@@ -26,12 +26,13 @@ Draw.io,
 [Trello](https://trello.com/b/gL7YVJ0O/lp-trab-final)
 
 # Trabalho do grupo 1 de lógica de programação
-Lorrayne Morais Baptista
 
-Letícia Peixoto Mattos Lima
+[Lorrayne Morais Baptista](https://github.com/LorrayneMorais)
 
-Frederico da Costa Fernandes
+[Letícia Peixoto Mattos Lima](https://github.com/leticiapzs)
 
-Lucas Cardinot da Silva
+[Frederico da Costa Fernandes](https://github.com/FFred-Fernandes)
 
-Yuri Moreira Campos 
+[Lucas Cardinot da Silva](https://github.com/UserCardinot)
+
+[Yuri Moreira Campos](https://github.com/YuriCampos889) 
