@@ -13,8 +13,8 @@ programa
 	cadeia vetor[7][3] = {		{"Lucas", "1234", "verdadeiro"},
 							{"Lorrayne","2345", "verdadeiro"},
 							{"Leticia", "3456", "falso"},
-							{"Yuri","4567", "falso"},
-							{"Frederico","5678", "verdadeiro"},
+							{"Yuri","4567", "verdadeiro"},
+							{"Frederico","5678", "falso"},
 							{"", "", ""},
 							{"", "", ""}						}
 
@@ -226,7 +226,7 @@ programa
 		se(logar == "nao"){
 			limpa()
 			escreva("Volte sempre que desejar!")
-			u.aguarde(2000)
+			u.aguarde(1000)
 			limpa()
 		}
 	}
@@ -280,7 +280,12 @@ programa
 		
 		inteiro opcao
 		logico logado
-		cadeia novoUser, novoPassword, novoAdmin, opcao2
+		cadeia novoUser, novoPassword, novoAdmin, editUser, editPassword, editAdmin, userEditado, passEditado, adminEditado, opcao2, opcao3
+
+		usuario = txt.caixa_baixa(usuario)
+    		para(inteiro i = 0; i < 7; i++){
+        		vetor[i][0] = txt.caixa_baixa(vetor[i][0])
+    		}
 
 		escreva("\t╔═══════.♡.═══════════════════════════════════════════════════════╗\n\n")
 		u.aguarde(1000)
@@ -289,13 +294,14 @@ programa
 		u.aguarde(2000)
 		escreva("\t╚═══════════════════════════════════════════════════════.♡.═══════╝\n\n\n")
 		u.aguarde(1000)
-		escreva("\t\t\t\t\t^^ Miau! ^^\n\n\t\tO que você acha de dar uma olhadinha nas opções?\n\n\n")
+		escreva("\t\t\t\t^^ Miau! ^^\n\n\t\tO que você acha de dar uma olhadinha nas opções?\n\n\n")
 		u.aguarde(2000)
 
 		
-		escreva("1. Adicione um novo usuario.\n2. altere um usuario existente\n3. Exclua um usuario\n4. Sair.\n\n")
+		escreva("1. Adicionar um novo usuario.\n2. Alterar um usuario existente.\n3. Excluir um usuario.\n4. Sair.\n\n")
 		escreva("\nTecle um miaúmero que você deseja: ")
 		leia(opcao)
+		limpa()
 		
 		//Exibe as opções
 		escolha(opcao){
@@ -351,8 +357,63 @@ programa
 					menuAdmin()
 				}
 				pare
+				
 			caso 2:
-				escreva("\t2. Teste de alterar usuario existente\n\n")
+				
+				escreva("Escreva o nome do usuário que deseja modificar: ")
+				leia(editUser)
+
+				escreva("Deseja continuar com a modificação?  (sim / nao)\n\n==> ")
+				leia(opcao3)
+				
+				se(opcao3 == "sim"){
+					limpa()
+					para(inteiro i = 0; i < 7; i++) {
+		            		se(vetor[i][0] == editUser) {
+			               escreva("Digite o novo nome de usuário: ")
+			               leia(editUser)
+			               vetor[i][0] = editUser
+						escreva("Digite a nova senha do usuário: ")
+						leia(passEditado)
+						vetor[i][1] = passEditado
+						escreva("Escolha se será admin ou não (verdadeiro / falso): ")
+						leia(adminEditado)
+						vetor[i][2] = adminEditado
+			         		}
+        				}
+					
+					limpa()
+					
+					escreva("Deseja voltar ao menu de Admin ou deslogar?  (sim / nao / deslogar)\n\n==> ")
+					leia(opcao2)
+					se(opcao2 == "sim"){
+						limpa()
+						menuAdmin()
+					}
+					se(opcao2 == "nao"){
+						escreva("saindo ...")
+						u.aguarde(1000)
+					}
+					se(opcao2 == "deslogar"){
+						limpa()
+						menuLogin()
+					}
+					senao{
+						limpa()
+						escreva("Opcao Invalida, voltando ao menu!")
+						u.aguarde(1500)
+						limpa()
+						menuAdmin()
+					}
+				}
+				senao{
+					escreva("\nUsuário não modificado!")
+					u.aguarde(2000)
+					limpa()
+					menuAdmin()
+				}
+			
+				
 				pare
 			caso 3:
 				escreva("\t2. Teste de excluir usuario existente\n\n")
@@ -775,10 +836,10 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 7713; 
- * @DOBRAMENTO-CODIGO = [20, 72, 449, 608];
+ * @POSICAO-CURSOR = 10567; 
+ * @DOBRAMENTO-CODIGO = [429, 510, 669];
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = ;
+ * @SIMBOLOS-INSPECIONADOS = {vetor, 13, 8, 5};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
