@@ -10,6 +10,13 @@ programa
 
 	cadeia logar, usuario, password
 	logico verificador = falso, isAdmin = falso
+	cadeia vetor[7][3] = {		{"Lucas", "1234", "verdadeiro"},
+							{"Lorrayne","2345", "verdadeiro"},
+							{"Leticia", "3456", "falso"},
+							{"Yuri","4567", "falso"},
+							{"Frederico","5678", "verdadeiro"},
+							{"", "", ""},
+							{"", "", ""}						}
 
 	funcao inicio(){
 		logo()
@@ -151,7 +158,7 @@ programa
 		inteiro sair
 		
 		//Deseja entrar na loja? S/N
-		escreva("\nDeseja efetuar o login na Loja? (sim/nao)\n")
+		escreva("\nDeseja efetuar o login na Loja? (sim / nao): ")
 		leia(logar)
 		logar = txt.caixa_baixa(logar)
 
@@ -173,7 +180,7 @@ programa
 			escreva("Digite sua senha: ")
 			leia(password)
 			limpa()
-			escreva("Deseja continuar?\nEscolha 1 (sim)\nEscolha 2 (não)\nEscolha 3 (voltar ao menu)\n\n")
+			escreva("Deseja continuar?\nTecle 1 para continuar.\nTecle 2 para sair.\nTecle 3 para retornar ao Menu.\n")
 			leia(sair)
 
 			escolha(sair){
@@ -222,21 +229,19 @@ programa
 		}
 	}
 
-	funcao logico login(cadeia usuario, cadeia password, logico isAdmin){
+	funcao logico login(cadeia user, cadeia pass, logico Admin){
 
-		logico logado = falso
-		cadeia vetor[5][3] = {{"Lucas", "1234", "verdadeiro"}, {"Lorrayne","2345", "verdadeiro"},
-		{"Leticia", "3456", "falso"}, {"Yuri","4567", "falso"}, {"Frederico","5678", "falso"}}
+		logico logado = falso	
 		
 		// Converte os nomes dos usuários e do usuario querendo se conectar para caixa baixa
 		usuario = txt.caixa_baixa(usuario)
-    		para(inteiro i = 0; i < 5; i++){
+    		para(inteiro i = 0; i < 7; i++){
         		vetor[i][0] = txt.caixa_baixa(vetor[i][0])
     		}
 
 		//i. Verificação de acesso (se o usuário e senha forem válidos, entra no sistema, senão
 		//retorna para o usuário digitar novamente);
-    		para(inteiro i = 0; i < 5; i++) {
+    		para(inteiro i = 0; i < 7; i++) {
        		se(usuario == vetor[i][0] e password == vetor[i][1]) {
        			limpa()
        			escreva("Aguarde enquanto efetuamos o Login!")
@@ -248,12 +253,13 @@ programa
 				se(vetor[i][2] == "verdadeiro"){
 					isAdmin = verdadeiro
 					menuAdmin()
-					retorne falso
+					se(verificador == verdadeiro){
+						retorne verdadeiro
+					}se(verificador == falso){
+						retorne falso
+					}
 				}
-				senao{
-					isAdmin = falso
-					retorne verdadeiro
-				}
+				retorne verdadeiro
         		}
     		}
     			//Caso não tenha usuario cadastrado
@@ -272,6 +278,7 @@ programa
 		
 		inteiro opcao
 		logico logado
+		cadeia novoUser, novoPassword, novoAdmin, opcao2
 
 		escreva("Olá Admin, é ótimo ter você de volta! ♡\nSeja bem-vindo(a) ", usuario)
 		escreva("\nAqui você realizar diversas tarefas como adiministrador.\n\n")
@@ -282,12 +289,60 @@ programa
 		
 		escreva("1. Adicione um novo usuario.\n2. altere um usuario existente\n3. Exclua um usuario\n4. Sair\n\n")
 		leia(opcao)
-				
+		
 		//Exibe as opções
 		escolha(opcao){
 			caso 1:
 				limpa()
-				escreva("\t1. Teste de adicionar usuario\n\n")
+				escreva("Escreva o nome que queira adicionar como usuario: ")
+				leia(novoUser)
+				para(inteiro i = 5 ; i < 7 ; i++){
+					se(vetor[i][0] == ""){
+						vetor[i][0] = novoUser
+						pare
+					}				
+				}
+				
+				escreva("Escreva a senha que queira adicionar ao usuario: ")
+				leia(novoPassword)
+				para(inteiro i = 5 ; i < 7 ; i++){
+					se(vetor[i][1] == ""){
+						vetor[i][1] = novoPassword
+						pare
+					}
+				}
+				
+				escreva("Escreva se usuario será Admin (verdadeiro ou falso): ")
+				leia(novoAdmin)
+				para(inteiro i = 5 ; i < 7 ; i++){
+					se(vetor[i][2] == ""){
+						vetor[i][2] = novoAdmin
+						pare
+					}
+				}
+				
+				limpa()
+				escreva("Deseja voltar ao menu de Admin ou deslogar?  (sim / nao / deslogar)\n\n==> ")
+				leia(opcao2)
+				se(opcao2 == "sim"){
+					limpa()
+					menuAdmin()
+				}
+				se(opcao2 == "nao"){
+					escreva("saindo ...")
+					u.aguarde(1000)
+				}
+				se(opcao2 == "deslogar"){
+					limpa()
+					menuLogin()
+				}
+				senao{
+					limpa()
+					escreva("Opcao Invalida, voltando ao menu!")
+					u.aguarde(1500)
+					limpa()
+					menuAdmin()
+				}
 				pare
 			caso 2:
 				escreva("\t2. Teste de alterar usuario existente\n\n")
@@ -685,8 +740,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 9831; 
- * @DOBRAMENTO-CODIGO = [13, 65, 149, 270, 306, 359, 518];
+ * @POSICAO-CURSOR = 506; 
+ * @DOBRAMENTO-CODIGO = [20, 72, 361, 414, 573];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
