@@ -113,6 +113,33 @@ programa
         	}
         	escreva("\n")
         	u.aguarde(1000)
+
+        	escreva("\t\t♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥\n")
+		escreva("\t\t♥♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♥\n")
+		escreva("\t\t♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥\n")
+		escreva("\t\t♥♡♡    ∧,,∧              /^--^\\     /^--^\\     /^--^\\                ∧,,∧    ♡♡♥\n")
+		escreva("\t\t♥♡♡  =( o.o)=            \\    /     \\    /     \\    /              =(~.~ )=  ♡♡♥\n")
+		escreva("\t\t♥♡♡   /  />☕            /      \\   /      \\   /      \\             >☕<-  \\   ♡♡♥\n")
+		escreva("\t\t♥♡♡  |      |          |        | |        | |        |            |      |  ♡♡♥\n")
+		escreva("\t\t♥♡♡   \\    /            \\__  __/   \\__  __/   \\__  __/             \\      /  ♡♡♥\n")
+		escreva("\t\t♥♡♡█|^|^|^|^|^|^|^|^|^|^|^|^\\ \\^|^|^|^/ /^|^|^|^|^\\ \\^|^|^|^|^|^|^|^|^|^|^|^█♡♡♥\n")
+		escreva("\t\t♥♡♡█| | | | | | | | | | | | |\\ \\| | |/ /| | | | | |\\ \\| | | | | | | | | | | █♡♡♥\n")
+		escreva("\t\t♥♡♡█| | | | | | | | | | | | / / | | |\\ \\| | | | | |/ /| | | | | | | | | | | █♡♡♥\n")
+		escreva("\t\t♥♡♡█| | | | | | | | | | | | \\/| | | | \\/| | | | | |\\/ | | | | | | | | | | | █♡♡♥\n")
+		escreva("\t\t♥♡♡█╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫█♡♡♥\n")
+		escreva("\t\t♥♡♡█╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫█♡♡♥\n")
+		escreva("\t\t♥♡♡█| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | █♡♡♥\n")
+		escreva("\t\t♥♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♥\n")
+		escreva("\t ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥\n")
+		escreva("\t ♥♡♡  ,---------.                                  ;,' ,---------.                                ♡♡♥\n")
+		escreva("\t ♥♡♡ ' .-------./    ,---.  ,--------.      _o_   :;' '  .------./    ,---.    ,------.  ,------. ♡♡♥\n")
+		escreva("\t ♥♡♡ |  |           /  O  \\ '--.  .--'  ,-.'---`.__ ; |  |           /  O  \\   |  .---'  |  .---' ♡♡♥\n")
+		escreva("\t ♥♡♡ |  | ^¬.¬^    |  .-.  |   |  |    ((j`=====',-'  |  |≽^•w•^≼   |  .-.  |  |  `--,   |  `--,  ♡♡♥\n")
+		escreva("\t ♥♡♡ '  '------'\\  |  | |  |   |  |     `-\\     /     '  '------'\\  |  | |  |  |  |`     |  `---. ♡♡♥\n")
+		escreva("\t ♥♡♡  `---------'  `--' `--'   `--'        `-=-'       `---------'  `--' `--'  `--'      `------' ♡♡♥\n")
+		escreva("\t ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥\n")
+		escreva("\t ♥♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♥\n")
+		escreva("\t ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥\n\n")
 	}
 
 	funcao menuLogin(){
@@ -295,27 +322,34 @@ programa
 				}
 				
 				limpa()
-				escreva("Deseja voltar ao menu de Admin ou deslogar?  (sim / sair / deslogar)\n\n==> ")
-				leia(opcao2)
-				se(opcao2 == "sim"){
-					limpa()
-					menuAdmin()
-				}
-				se(opcao2 == "sair"){
-					escreva("saindo ...")
-					u.aguarde(1000)
-				}
-				se(opcao2 == "deslogar"){
-					limpa()
-					menuLogin()
-				}
-				senao{
-					limpa()
-					escreva("Opcao Invalida, voltando ao menu!")
-					u.aguarde(1500)
-					limpa()
-					menuAdmin()
-				}
+				escreva("Deseja voltar ao menu de Admin, sair ou deslogar?\n Digite: s para sim\n Digite: f para finalizar\n Digite: d para deslogar\n\n==> ")
+					leia(opcao2)
+					escolher = ti.cadeia_para_caracter(opcao2)
+
+					escolha(escolher){
+						caso 's':
+							limpa()
+							menuAdmin()
+						pare
+	
+						caso 'f':
+							escreva("saindo ...")
+							u.aguarde(1000)
+						pare
+	
+						caso 'd':
+							limpa()
+							menuLogin()
+						pare
+						
+						caso contrario:
+							limpa()
+							escreva("Opcao Invalida, voltando ao menu!")
+							u.aguarde(1500)
+							limpa()
+							menuAdmin()
+						pare
+					}
 				pare
 				
 			caso 2:
@@ -1102,8 +1136,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 17223; 
- * @DOBRAMENTO-CODIGO = [21, 33, 117, 193, 238, 640, 832];
+ * @POSICAO-CURSOR = 4818; 
+ * @DOBRAMENTO-CODIGO = [21, 144, 220, 265, 674, 866, 1059];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
