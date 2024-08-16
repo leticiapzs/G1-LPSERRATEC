@@ -27,6 +27,10 @@ Portugol,
 Draw.io, 
 [Trello](https://trello.com/b/gL7YVJ0O/lp-trab-final)
 
+# Fluxograma Login
+
+[fluxograma](https://github.com/leticiapzs/G1-LPSERRATEC/blob/main/fluxogramaLogin.png)
+
 # Trabalho do grupo 1 de lógica de programação
 
 [Lorrayne Morais Baptista](https://github.com/LorrayneMorais)
