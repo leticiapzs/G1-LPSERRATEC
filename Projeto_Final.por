@@ -31,7 +31,6 @@ programa
 		}
 	}
 
-
 	funcao logo()
 	{
 		para(inteiro i = 0; i < 6; i++) {
@@ -745,7 +744,7 @@ programa
 							limpa()
 							x = carrinhoDeCompras(1, 12)
 						}
-						senao se (opcaoUsuario == "2")
+						se(opcaoUsuario == "2")
 						{
 							limpa()
 							escreva("Voltando ao menu inicial...\n")
@@ -754,7 +753,8 @@ programa
 							menuPrincipal()
 							x = falso
 						}
-						senao
+						x = falso
+						se(opcaoUsuario != "1" ou opcaoUsuario != "2")
 						{
 							escreva("Opção inválida, tente novamente.\n")
 							limpa()
@@ -1102,8 +1102,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 751; 
- * @DOBRAMENTO-CODIGO = [21, 34, 118, 194, 239, 471, 641, 832];
+ * @POSICAO-CURSOR = 17223; 
+ * @DOBRAMENTO-CODIGO = [21, 33, 117, 193, 238, 640, 832];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
