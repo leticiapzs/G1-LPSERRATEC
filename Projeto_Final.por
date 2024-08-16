@@ -412,12 +412,14 @@ programa
 					limpa()
 					menuAdmin()
 				}
-			
-				
+							
 				pare
+				
 			caso 3:
+			
 				escreva("\t2. Teste de excluir usuario existente\n\n")
 				pare
+				
 			caso 4:
 				escreva("\nsaindo...")
 				u.aguarde(1000)
@@ -836,9 +838,9 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 10567; 
- * @DOBRAMENTO-CODIGO = [429, 510, 669];
- * @PONTOS-DE-PARADA = ;
+ * @POSICAO-CURSOR = 10042; 
+ * @DOBRAMENTO-CODIGO = [431, 512, 671];
+ * @PONTOS-DE-PARADA = 304;
  * @SIMBOLOS-INSPECIONADOS = {vetor, 13, 8, 5};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
