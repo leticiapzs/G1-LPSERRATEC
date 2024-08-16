@@ -5,17 +5,19 @@ CatCafé é uma cafeteria aconchegante e charmosa, onde amantes de gatos, café 
 
 # Sobre o Projeto
 
-Algumas funcionalidades do sistema:
-
 Algumas funcionalidades do sistema: 
 
 Animação;
 
 Menu de login;
 
+Login administrativo 
+
 Tela de entrada na loja;
 
 Um menu para cada categoria (comida e bebida);
+
+Sistema de carrinho de compras 
 
 Listagem dos Produtos com imagem do próprio
 
