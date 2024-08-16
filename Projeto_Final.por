@@ -9,11 +9,12 @@ programa
 	inclua biblioteca Teclado --> t
 
 	cadeia logar, usuario, password
+	inteiro valorFinal = 0, quantTotal = 0, carrinho = 0
 	logico verificador = falso, isAdmin = falso
 	cadeia vetor[7][3] = {		{"Lucas", "1234", "verdadeiro"},
 							{"Lorrayne","2345", "verdadeiro"},
 							{"Leticia", "3456", "falso"},
-							{"Yuri","4567", "verdadeiro"},
+							{"Yuri","4567", "falso"},
 							{"Frederico","5678", "falso"},
 							{"", "", ""},
 							{"", "", ""}						}
@@ -24,46 +25,7 @@ programa
 
 		enquanto(verificador == verdadeiro){
 				
-			menuPrincipal()
-	
-			escreva("Deu certo!!!")			
-	
-			//c. Após escolher a categoria, exibe os produtos;
-				
-			//d. Opção de sair caso o usuário não deseje mais acessar o sistema (retorna para a tela de login);
-			
-			//e. Um tratamento de erro no menu.				
-		
-			//Produtos
-			//a. Inserir uma arte (pequena) que represente cada produto;			
-		
-			//b. Nome do produto;
-				
-			//c. Descrição breve do produto;
-				
-			//d. Quantidade de itens (estoque);
-					
-			//e. Preço do produto (ex: R$ 10,99);
-		
-			//f. Opção de voltar ao menu anterior;
-			
-			//g. Um tratamento de erro nos produtos.
-			
-			/*Bônus:
-			1. Utilizar a estrutura para...até...faça para desenhar a logo da loja.
-				
-			2. Outros três tratamentos de erros em qualquer parte do sistema.
-				
-			3. Criar um login administrador que realize as seguintes alterações:
-			a. exclua um usuário existente;
-			b. altere um usuário existente;
-			c. adicione um usuário novo.
-				
-			4. Carrinho de compras
-			a. Lista os produtos inseridos no carrinho, suas quantidades e preços unitário;
-			b. Inserir valor total no carrinho;
-			c. Opção de voltar ao menu anterior;
-			d. Opção de confirmar compra disparando uma mensagem, tipo “Compra realizada com sucesso!” e limpa(zera) o carrinho.*/
+			menuPrincipal()		
 				
 			verificador = falso
 		}
@@ -181,7 +143,6 @@ programa
 			leia(password)
 			limpa()
 			escreva("Deseja continuar?\n\nTecle 1 para continuar.\nTecle 2 para sair.\nTecle 3 para retornar ao Menu.\n\n")
-			u.aguarde(1000)
 			escreva("Escolha uma opção: ")
 			leia(sair)
 
@@ -278,9 +239,10 @@ programa
 
 	funcao menuAdmin(){
 		
-		inteiro opcao
+		inteiro opcao, posicao = 100
+		caracter escolher
 		logico logado
-		cadeia novoUser, novoPassword, novoAdmin, editUser, editPassword, editAdmin, userEditado, passEditado, adminEditado, opcao2, opcao3
+		cadeia novoUser, novoPassword, novoAdmin, editUser = "", editPassword = "", editAdmin = "", userEditado, passEditado, adminEditado, userExcluir, opcao2, opcao3
 
 		usuario = txt.caixa_baixa(usuario)
     		para(inteiro i = 0; i < 7; i++){
@@ -291,7 +253,6 @@ programa
 		u.aguarde(1000)
 		escreva("\t\t\t♡ Olá Admin, é ótimo ter você de volta! ♡\n\n\n")
 		escreva("\t\t      Seja bem-vindo(a) ", usuario, ", aqui você realizará\n\n\t\t         diversas tarefas como adiministrador.\n\n")
-		u.aguarde(2000)
 		escreva("\t╚═══════════════════════════════════════════════════════.♡.═══════╝\n\n\n")
 		u.aguarde(1000)
 		escreva("\t\t\t\t^^ Miau! ^^\n\n\t\tO que você acha de dar uma olhadinha nas opções?\n\n\n")
@@ -335,13 +296,13 @@ programa
 				}
 				
 				limpa()
-				escreva("Deseja voltar ao menu de Admin ou deslogar?  (sim / nao / deslogar)\n\n==> ")
+				escreva("Deseja voltar ao menu de Admin ou deslogar?  (sim / sair / deslogar)\n\n==> ")
 				leia(opcao2)
 				se(opcao2 == "sim"){
 					limpa()
 					menuAdmin()
 				}
-				se(opcao2 == "nao"){
+				se(opcao2 == "sair"){
 					escreva("saindo ...")
 					u.aguarde(1000)
 				}
@@ -359,7 +320,7 @@ programa
 				pare
 				
 			caso 2:
-				
+
 				escreva("Escreva o nome do usuário que deseja modificar: ")
 				leia(editUser)
 
@@ -370,54 +331,134 @@ programa
 					limpa()
 					para(inteiro i = 0; i < 7; i++) {
 		            		se(vetor[i][0] == editUser) {
-			               escreva("Digite o novo nome de usuário: ")
-			               leia(editUser)
-			               vetor[i][0] = editUser
-						escreva("Digite a nova senha do usuário: ")
-						leia(passEditado)
-						vetor[i][1] = passEditado
-						escreva("Escolha se será admin ou não (verdadeiro / falso): ")
-						leia(adminEditado)
-						vetor[i][2] = adminEditado
-			         		}
+				               escreva("Digite o novo nome de usuário: ")
+				               leia(editUser)
+				               vetor[i][0] = editUser
+							escreva("Digite a nova senha do usuário: ")
+							leia(passEditado)
+							vetor[i][1] = passEditado
+							escreva("Escolha se será admin ou não (verdadeiro / falso): ")
+							leia(adminEditado)
+							vetor[i][2] = adminEditado
+							posicao = i
+			         		}						
         				}
-					
+        				
+        				se(posicao == 100) {
+			         		escreva("Usuário não encontrado, voltando ao menu!")
+			         		u.aguarde(1500)
+			         		limpa()
+			         		menuAdmin()
+			         	}
+			         	
 					limpa()
 					
-					escreva("Deseja voltar ao menu de Admin ou deslogar?  (sim / nao / deslogar)\n\n==> ")
+					escreva("Deseja voltar ao menu de Admin, sair ou deslogar?\n Digite: s para sim\n Digite: f para finalizar\n Digite: d para deslogar\n\n==> ")
 					leia(opcao2)
-					se(opcao2 == "sim"){
-						limpa()
-						menuAdmin()
-					}
-					se(opcao2 == "nao"){
-						escreva("saindo ...")
-						u.aguarde(1000)
-					}
-					se(opcao2 == "deslogar"){
-						limpa()
-						menuLogin()
-					}
-					senao{
-						limpa()
-						escreva("Opcao Invalida, voltando ao menu!")
-						u.aguarde(1500)
-						limpa()
-						menuAdmin()
-					}
+					escolher = ti.cadeia_para_caracter(opcao2)
+
+					escolha(escolher){
+						caso 's':
+							limpa()
+							menuAdmin()
+						pare
+	
+						caso 'f':
+							escreva("saindo ...")
+							u.aguarde(1000)
+						pare
+	
+						caso 'd':
+							limpa()
+							menuLogin()
+						pare
+						
+						caso contrario:
+							limpa()
+							escreva("Opcao Invalida, voltando ao menu!")
+							u.aguarde(1500)
+							limpa()
+							menuAdmin()
+						pare
+					}											
 				}
-				senao{
-					escreva("\nUsuário não modificado!")
-					u.aguarde(2000)
+				
+				se(opcao3 == "nao"){
+					escreva("Usuário não modificado!")
+					u.aguarde(1000)
 					limpa()
 					menuAdmin()
 				}
-							
+
 				pare
 				
 			caso 3:
 			
-				escreva("\t2. Teste de excluir usuario existente\n\n")
+				escreva("Escreva o nome do usuário que deseja excluir: ")
+				leia(userExcluir)
+
+				escreva("Deseja continuar com a exclusão?  (sim / nao)\n\n==> ")
+				leia(opcao3)
+				
+				se(opcao3 == "sim"){
+					limpa()
+					para(inteiro i = 0; i < 7; i++) {
+			            	se(vetor[i][0] == userExcluir) {
+				          	escreva("O usuário: ", userExcluir, " foi deletado!" )
+				          	vetor[i][0] = ""
+				          	vetor[i][1] = ""
+				          	vetor[i][2] = ""
+				          	u.aguarde(2000)
+				          	posicao = i
+				         	}		         	
+					}
+					
+				     se(posicao == 100) {
+			         		escreva("Usuário não encontrado, voltando ao menu!")
+			         		u.aguarde(1500)
+			         		limpa()
+			         		menuAdmin()
+			         	}
+
+			         	limpa()
+					
+					escreva("Deseja voltar ao menu de Admin, sair ou deslogar?\n Digite: s para sim\n Digite: f para finalizar\n Digite: d para deslogar\n\n==> ")
+					leia(opcao2)
+					escolher = ti.cadeia_para_caracter(opcao2)
+
+					escolha(escolher){
+						caso 's':
+							limpa()
+							menuAdmin()
+						pare
+	
+						caso 'f':
+							escreva("saindo ...")
+							u.aguarde(1000)
+						pare
+	
+						caso 'd':
+							limpa()
+							menuLogin()
+						pare
+						
+						caso contrario:
+							limpa()
+							escreva("Opcao Invalida, voltando ao menu!")
+							u.aguarde(1500)
+							limpa()
+							menuAdmin()
+						pare
+					}
+				}
+				
+				se(opcao3 == "nao"){
+					escreva("Usuário não modificado!")
+					u.aguarde(1000)
+					limpa()
+					menuAdmin()
+				}
+        			
 				pare
 				
 			caso 4:
@@ -428,17 +469,17 @@ programa
 		}
 	}
 	
-		//Menu Principal 
-		funcao menuPrincipal() {
+	funcao menuPrincipal() {
 
 			inteiro opcao, opcao1, opcao2, x = 0
-			cadeia matrizProdutos[6][4] = {{"Café gato preto", 			"10.99", 	"8", 	"Um expresso intenso e encorpado, tão misterioso quanto um gato preto"}, 
-									{"Cappuccino Gatinho de Espuma", 	"4.99", 	"5", 	"Cappuccino suave com espuma extra fofa, decorado com orelhinhas de gato de canela"}, 
-									{"Smoothie Gatinho Tropical", 	"13.99", 	"10", 	"Mix de frutas tropicais, como manga, abacaxi e maracujá, com um toque de leite de coco"}, 
-									{"Muffin Meowberry" ,			"8.99", 	"20", 	"Muffin de mirtilo com um toque de limão, servido quentinho"}, 
-									{"Cookie Pata de Gato", 			"8.99", 	"20", 	"Cookie de chocolate com pedaços de chocolate branco, moldado em formato de pata de gato"}, 
-									{"Bolo Gata Mansa", 			"8.99", 	"20", 	"Bolo de baunilha com recheio de creme de leite e cobertura de chantilly"}}
+			cadeia matrizProdutos[6][4] = {{"Café gato preto", 			"9.00", 	"8", 	"Um expresso intenso e encorpado, tão misterioso quanto um gato preto"}, 
+									{"Smoothie Gatinho Tropical", 	"12.00", 	"10", 	"Mix de frutas tropicais, como manga, abacaxi e maracujá, com um toque de leite de coco"}, 
+									{"Cappuccino Gatinho de Espuma", 	"7.00", 	"5", 	"Cappuccino suave com espuma extra fofa, decorado com orelhinhas de gato de canela"}, 
+									{"Bolo Gata Mansa", 			"8.00", 	"20", 	"Bolo de baunilha com recheio de creme de leite e cobertura de chantilly"}, 
+									{"Cookie Pata de Gato", 			"5.00", 	"20", 	"Cookie de chocolate com pedaços de chocolate branco, moldado em formato de pata de gato"}, 
+									{"Muffin Meowberry" ,			"7.00", 	"20", 	"Muffin de mirtilo com um toque de limão, servido quentinho"}}
 
+			limpa()
 			
 			escreva("\t╔═══════.♡.═══════════════════════════════════════════════════════╗\n\n")
 			u.aguarde(1000)
@@ -447,7 +488,7 @@ programa
 			escreva("\t      Seja bem-vindo(a) " , usuario, ", ao CatCafé, a nossa cafeteria\n\t\t\tonde você se sentirá como um gato!\n\t\t     Miados e ronronos são liberados, carinhos\n\t\t\t     e o sabor se entrelaçam.\n\n")
 			u.aguarde(1000)
 			escreva("\t╚═══════════════════════════════════════════════════════.♡.═══════╝\n\n\n")
-			u.aguarde(8000)
+			u.aguarde(2500)
 			escreva("\t\t\t\t\t^^ Miau! ^^\n\n\t\tO que você acha de dar uma olhadinha no nosso miaudápio?\n\n\n")
 			u.aguarde(2000)
 			escreva("\tTecle 1 para: Miaudápio.\n\tTecle 2 para: Sair.\n\n")
@@ -459,34 +500,121 @@ programa
 			//Opção das categorias, exibe os produtos e retorna ao menu de login
 			escolha(opcao){
 				caso 1:
-					escreva("\t\t\t||^~ Miaudápio! ~^||\n\n\n")
+					escreva("\t\t♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥\n")
+					escreva("\t\t♥♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♥\n")
+					escreva("\t\t♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥\n")
+					escreva("\t\t♥♡♡    ∧,,∧              /^--^\\     /^--^\\     /^--^\\                ∧,,∧    ♡♡♥\n")
+					escreva("\t\t♥♡♡  =( o.o)=            \\    /     \\    /     \\    /              =(~.~ )=  ♡♡♥\n")
+					escreva("\t\t♥♡♡   /  />☕            /      \\   /      \\   /      \\             >☕<-  \\   ♡♡♥\n")
+					escreva("\t\t♥♡♡  |      |          |        | |        | |        |            |      |  ♡♡♥\n")
+					escreva("\t\t♥♡♡   \\    /            \\__  __/   \\__  __/   \\__  __/             \\      /  ♡♡♥\n")
+					escreva("\t\t♥♡♡█|^|^|^|^|^|^|^|^|^|^|^|^\\ \\^|^|^|^/ /^|^|^|^|^\\ \\^|^|^|^|^|^|^|^|^|^|^|^█♡♡♥\n")
+					escreva("\t\t♥♡♡█| | | | | | | | | | | | |\\ \\| | |/ /| | | | | |\\ \\| | | | | | | | | | | █♡♡♥\n")
+					escreva("\t\t♥♡♡█| | | | | | | | | | | | / / | | |\\ \\| | | | | |/ /| | | | | | | | | | | █♡♡♥\n")
+					escreva("\t\t♥♡♡█| | | | | | | | | | | | \\/| | | | \\/| | | | | |\\/ | | | | | | | | | | | █♡♡♥\n")
+					escreva("\t\t♥♡♡█╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫█♡♡♥\n")
+					escreva("\t\t♥♡♡█╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫█♡♡♥\n")
+					escreva("\t\t♥♡♡█| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | █♡♡♥\n")
+					escreva("\t\t♥♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♥\n")
+					escreva("\t ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥\n")
+					escreva("\t ♥♡♡  ,---------.                                  ;,' ,---------.                                ♡♡♥\n")
+					escreva("\t ♥♡♡ ' .-------./    ,---.  ,--------.      _o_   :;' '  .------./    ,---.    ,------.  ,------. ♡♡♥\n")
+					escreva("\t ♥♡♡ |  |           /  O  \\ '--.  .--'  ,-.'---`.__ ; |  |           /  O  \\   |  .---'  |  .---' ♡♡♥\n")
+					escreva("\t ♥♡♡ |  | ^¬.¬^    |  .-.  |   |  |    ((j`=====',-'  |  |≽^•w•^≼   |  .-.  |  |  `--,   |  `--,  ♡♡♥\n")
+					escreva("\t ♥♡♡ '  '------'\\  |  | |  |   |  |     `-\\     /     '  '------'\\  |  | |  |  |  |`     |  `---. ♡♡♥\n")
+					escreva("\t ♥♡♡  `---------'  `--' `--'   `--'        `-=-'       `---------'  `--' `--'  `--'      `------' ♡♡♥\n")
+					escreva("\t ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥\n")
+					escreva("\t ♥♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♥\n")
+					escreva("\t ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥\n\n")
+				
 					escreva("\t1. Bebidas.\n")	
-					escreva("\t2. Comidas.\n\n")
+					escreva("\t2. Comidas.\n")
+					escreva("\t3. Sair do programa.\n\n")
 					escreva("Escolha: ")
 					leia(opcao1)
 
 					se(opcao1 == 1){
 						limpa()
-						//menu
-							escreva("\t\t\tMiautálogo: Bebidas\n\n\n")
+
+							escreva("\t\t♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥\n")
+						  	escreva("\t\t♥♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♥\n")
+							escreva("\t\t♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥\n")
+							escreva("\t\t♥♡♡    ∧,,∧              /^--^\\     /^--^\\     /^--^\\                ∧,,∧    ♡♡♥\n")
+							escreva("\t\t♥♡♡  =( o.o)=            \\    /     \\    /     \\    /              =(~.~ )=  ♡♡♥\n")
+							escreva("\t\t♥♡♡   /  />☕            /      \\   /      \\   /      \\             >☕<-  \\   ♡♡♥\n")
+							escreva("\t\t♥♡♡  |      |          |        | |        | |        |            |      |  ♡♡♥\n")
+							escreva("\t\t♥♡♡   \\    /            \\__  __/   \\__  __/   \\__  __/             \\      /  ♡♡♥\n")
+							escreva("\t\t♥♡♡█|^|^|^|^|^|^|^|^|^|^|^|^\\ \\^|^|^|^/ /^|^|^|^|^\\ \\^|^|^|^|^|^|^|^|^|^|^|^█♡♡♥\n")
+							escreva("\t\t♥♡♡█| | | | | | | | | | | | |\\ \\| | |/ /| | | | | |\\ \\| | | | | | | | | | | █♡♡♥\n")
+							escreva("\t\t♥♡♡█| | | | | | | | | | | | / / | | |\\ \\| | | | | |/ /| | | | | | | | | | | █♡♡♥\n")
+							escreva("\t\t♥♡♡█| | | | | | | | | | | | \\/| | | | \\/| | | | | |\\/ | | | | | | | | | | | █♡♡♥\n")
+							escreva("\t\t♥♡♡█╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫█♡♡♥\n")
+							escreva("\t\t♥♡♡█╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫█♡♡♥\n")
+							escreva("\t\t♥♡♡█| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | █♡♡♥\n")
+							escreva("\t\t♥♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♥\n")
+							escreva("\t ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥\n")
+							escreva("\t ♥♡♡  ,---------.                                  ;,' ,---------.                                ♡♡♥\n")
+							escreva("\t ♥♡♡ ' .-------./    ,---.  ,--------.      _o_   :;' '  .------./    ,---.    ,------.  ,------. ♡♡♥\n")
+							escreva("\t ♥♡♡ |  |           /  O  \\ '--.  .--'  ,-.'---`.__ ; |  |           /  O  \\   |  .---'  |  .---' ♡♡♥\n")
+							escreva("\t ♥♡♡ |  | ^¬.¬^    |  .-.  |   |  |    ((j`=====',-'  |  |≽^•w•^≼   |  .-.  |  |  `--,   |  `--,  ♡♡♥\n")
+							escreva("\t ♥♡♡ '  '------'\\  |  | |  |   |  |     `-\\     /     '  '------'\\  |  | |  |  |  |`     |  `---. ♡♡♥\n")
+							escreva("\t ♥♡♡  `---------'  `--' `--'   `--'        `-=-'       `---------'  `--' `--'  `--'      `------' ♡♡♥\n")
+							escreva("\t ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥\n")
+							escreva("\t ♥♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♥\n")
+							escreva("\t ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥\n\n")
+							
 						para(inteiro i = 0; i < 3 ; i++) {
 							escreva(x++, ". ", matrizProdutos[i][0], ".\n")
 						}
 						escreva("\nTecle um miaúmero que você deseja: ")
 						leia(opcao2)
+						limpa()
 						bebidas(opcao2)
 						
 					}
 					se(opcao1 == 2){
 						limpa()
-						//menu
-							escreva("\t\t\tMiautálogo: Comidas\n\n\n")
+						
+							escreva("\t\t♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥\n")
+						  	escreva("\t\t♥♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♥\n")
+							escreva("\t\t♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥\n")
+							escreva("\t\t♥♡♡    ∧,,∧              /^--^\\     /^--^\\     /^--^\\                ∧,,∧    ♡♡♥\n")
+							escreva("\t\t♥♡♡  =( o.o)=            \\    /     \\    /     \\    /              =(~.~ )=  ♡♡♥\n")
+							escreva("\t\t♥♡♡   /  />☕            /      \\   /      \\   /      \\             >☕<-  \\   ♡♡♥\n")
+							escreva("\t\t♥♡♡  |      |          |        | |        | |        |            |      |  ♡♡♥\n")
+							escreva("\t\t♥♡♡   \\    /            \\__  __/   \\__  __/   \\__  __/             \\      /  ♡♡♥\n")
+							escreva("\t\t♥♡♡█|^|^|^|^|^|^|^|^|^|^|^|^\\ \\^|^|^|^/ /^|^|^|^|^\\ \\^|^|^|^|^|^|^|^|^|^|^|^█♡♡♥\n")
+							escreva("\t\t♥♡♡█| | | | | | | | | | | | |\\ \\| | |/ /| | | | | |\\ \\| | | | | | | | | | | █♡♡♥\n")
+							escreva("\t\t♥♡♡█| | | | | | | | | | | | / / | | |\\ \\| | | | | |/ /| | | | | | | | | | | █♡♡♥\n")
+							escreva("\t\t♥♡♡█| | | | | | | | | | | | \\/| | | | \\/| | | | | |\\/ | | | | | | | | | | | █♡♡♥\n")
+							escreva("\t\t♥♡♡█╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫█♡♡♥\n")
+							escreva("\t\t♥♡♡█╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫█♡♡♥\n")
+							escreva("\t\t♥♡♡█| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | █♡♡♥\n")
+							escreva("\t\t♥♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♥\n")
+							escreva("\t ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥\n")
+							escreva("\t ♥♡♡  ,---------.                                  ;,' ,---------.                                ♡♡♥\n")
+							escreva("\t ♥♡♡ ' .-------./    ,---.  ,--------.      _o_   :;' '  .------./    ,---.    ,------.  ,------. ♡♡♥\n")
+							escreva("\t ♥♡♡ |  |           /  O  \\ '--.  .--'  ,-.'---`.__ ; |  |           /  O  \\   |  .---'  |  .---' ♡♡♥\n")
+							escreva("\t ♥♡♡ |  | ^¬.¬^    |  .-.  |   |  |    ((j`=====',-'  |  |≽^•w•^≼   |  .-.  |  |  `--,   |  `--,  ♡♡♥\n")
+							escreva("\t ♥♡♡ '  '------'\\  |  | |  |   |  |     `-\\     /     '  '------'\\  |  | |  |  |  |`     |  `---. ♡♡♥\n")
+							escreva("\t ♥♡♡  `---------'  `--' `--'   `--'        `-=-'       `---------'  `--' `--'  `--'      `------' ♡♡♥\n")
+							escreva("\t ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥\n")
+							escreva("\t ♥♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♥\n")
+							escreva("\t ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥\n\n")
+							
 						para(inteiro i = 3; i < 6 ; i++) {
 							escreva(x++, ". ", matrizProdutos[i][0], ".\n")
 						}
 						escreva("\nTecle um miaúmero que você deseja: ")
 						leia(opcao2)
+						limpa()
 						comidas(opcao2)
+					}
+					se(opcao1 == 3){
+						limpa()
+						escreva("Finalizando o programa!")
+						u.aguarde(1500)
+						limpa()
 					}
 					pare
 				caso 2:
@@ -510,10 +638,13 @@ programa
 					menuPrincipal()
 			}
 		}
-		funcao bebidas(inteiro opcao){
+		
+	funcao bebidas(inteiro opcao){
+			
 			inteiro temp	
 			cadeia opcaoUsuario
-			inteiro carrinho = 0
+			logico x = verdadeiro
+			
 			escolha (opcao){
 				caso 1:
 			
@@ -526,15 +657,15 @@ programa
 					
 					// Carrega a imagem do produto
 					gatoPreto = g.carregar_imagem("gatoPreto.jpg")
-			
+
 					// Exibe os dados no console enquanto a imagem está aberta
 					escreva("\n┎┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┒\n")
 					escreva("\tNome:      Café Gato Preto\n\n")
 					escreva("\tPreço:     R$9.00\n\n")
-					escreva("\tDescrição: Um Expresso intenso e encorpaddo,\n\t\t    tão misterioso quanto um gato preto.\n\t\t    Ideal para quem aprecia um café forte e marcante\n")
+					escreva("\tDescrição: Um Expresso intenso e encorpado,\n\t\t    tão misterioso quanto um gato preto.\n\t\t    Ideal para quem aprecia um café forte e marcante\n")
 					escreva("\n┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┚\n")
 					// Loop principal para renderizar a imagem e capturar a decisão do usuário
-					enquanto(verdadeiro)
+					enquanto(x == verdadeiro)
 					{
 						// Limpa a tela e desenha a imagem
 						g.definir_cor(g.COR_BRANCO)
@@ -543,28 +674,38 @@ programa
 						g.renderizar()
 						
 						// decisão do usuário
-						escreva("\n   Deseja adicionar o produto ao carrinho ou voltar ao menu inicial? \n\t(digite '1 para adicionar' ou '2 para voltar ao menu')\n")
+						escreva("\n   Deseja adicionar o produto ao carrinho ou voltar ao menu inicial? \n\t(digite '1 para adicionar' ou '2 para voltar ao menu')\n\n")
 						leia(opcaoUsuario)
 						
 						// Tomada de decisão
 						se (opcaoUsuario == "1")
 						{
-							carrinho = carrinho + 1
+							carrinho++
 							escreva("Produto adicionado ao carrinho. Total no carrinho: ", carrinho, "\n")
-							//cod carrinho
+							u.aguarde(1000)
+							limpa()
+							x = carrinhoDeCompras(1, 9)
 						}
-						senao se (opcaoUsuario == "2")
+						se(opcaoUsuario == "2")
 						{
+							limpa()
 							escreva("Voltando ao menu inicial...\n")
 							u.aguarde(2000)
-							// cod para voltar ao menu inicial
-							pare
+							limpa()
+							menuPrincipal()
+							x = falso
 						}
 						senao
 						{
 							escreva("Opção inválida, tente novamente.\n")
+							limpa()
+							x = falso
+							menuPrincipal()
 						}
 					}
+					
+				pare
+					
 				caso 2:
 			
 					inteiro gatinhoTropical = -1
@@ -583,7 +724,7 @@ programa
 					escreva("\tDescrição: Mix de frutas tropicais, como manga, abacaxi e maracujá\n\t\t    com um toque de leite de coco. Refrescante e cheio de sabor, como um dia ensolarado.\n")
 					escreva("\n┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┚\n")
 					// Loop principal para renderizar a imagem e capturar a decisão do usuário
-					enquanto(verdadeiro)
+					enquanto(x == verdadeiro)
 					{
 						// Limpa a tela e desenha a imagem
 						g.definir_cor(g.COR_BRANCO)
@@ -598,22 +739,32 @@ programa
 						// Tomada de decisão
 						se (opcaoUsuario == "1")
 						{
-							carrinho = carrinho + 1
+							carrinho++
 							escreva("Produto adicionado ao carrinho. Total no carrinho: ", carrinho, "\n")
-							//cod carrinho
+							u.aguarde(1000)
+							limpa()
+							x = carrinhoDeCompras(1, 12)
 						}
 						senao se (opcaoUsuario == "2")
 						{
+							limpa()
 							escreva("Voltando ao menu inicial...\n")
 							u.aguarde(2000)
-							// cod para voltar ao menu inicial
-							pare
+							limpa()
+							menuPrincipal()
+							x = falso
 						}
 						senao
 						{
 							escreva("Opção inválida, tente novamente.\n")
+							limpa()
+							x = falso
+							menuPrincipal()
 						}
 					}
+					
+				pare
+					
 				caso 3:
 			
 					inteiro GatinhoDeespuma = -1						
@@ -632,7 +783,7 @@ programa
 					escreva("\tDescrição: Cappuccino suave com espuma extra fofa, decorado com orelhinhas de gato de canela. Perfeito para aquecer o coração.\n")
 					escreva("\n┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┚\n")
 					// Loop principal para renderizar a imagem e capturar a decisão do usuário
-					enquanto(verdadeiro)
+					enquanto(x == verdadeiro)
 					{
 						// Limpa a tela e desenha a imagem
 						g.definir_cor(g.COR_BRANCO)
@@ -647,32 +798,44 @@ programa
 						// Tomada de decisão
 						se (opcaoUsuario == "1")
 						{
-							carrinho = carrinho + 1
+							carrinho++
 							escreva("Produto adicionado ao carrinho. Total no carrinho: ", carrinho, "\n")
-							//cod carrinho
+							u.aguarde(1000)
+							limpa()
+							x = carrinhoDeCompras(1, 7)
 						}
 						senao se (opcaoUsuario == "2")
 						{
+							limpa()
 							escreva("Voltando ao menu inicial...\n")
 							u.aguarde(2000)
-							// cod para voltar ao menu inicial
-								pare
+							limpa()
+							menuPrincipal()
+							x = falso
 						}
 						senao
 						{
 							escreva("Opção inválida, tente novamente.\n")
+							limpa()
+							x = falso
+							menuPrincipal()
 						}
 					}
+				pare
+				
 				caso contrario:
 					escreva("\nOpção inválida! Voltando ao menu")
 					menuPrincipal()
-					pare
+				pare
 			}
 		}
-		funcao comidas(inteiro opcao){
+		
+	funcao comidas(inteiro opcao){
+
+			logico x = verdadeiro
 			inteiro temp	
 			cadeia opcaoUsuario
-			inteiro carrinho = 0
+			
 			escolha (opcao){
 				caso 1:				
 				inteiro gataMansa = -1
@@ -697,86 +860,104 @@ programa
 				escreva("\tDescrição: Bolo de baunilha com recheio de creme de leite e cobertura de chantilly,\n\t\t    decorado com orelhinhas de chocolate. Delicado e irresistível.\n\n")
 				escreva("\n┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┚\n")
 				// Loop principal para renderizar a imagem e capturar a decisão do usuário
-				enquanto(verdadeiro)
+				enquanto(x == verdadeiro)
 				{
-				// Limpa a tela e desenha a imagem
-				g.definir_cor(g.COR_BRANCO)
-				g.limpar()
-				g.desenhar_imagem(0, 0, gataMansa)
-				g.renderizar()
-							
-				// decisão do usuário
-				escreva("\n   Deseja adicionar o produto ao carrinho ou voltar ao menu inicial? \n\t(digite '1 para adicionar' ou '2 para voltar ao menu')\n")
-				leia(opcaoUsuario)
+					// Limpa a tela e desenha a imagem
+					g.definir_cor(g.COR_BRANCO)
+					g.limpar()
+					g.desenhar_imagem(0, 0, gataMansa)
+					g.renderizar()
+								
+					// decisão do usuário
+					escreva("\n   Deseja adicionar o produto ao carrinho ou voltar ao menu inicial? \n\t(digite '1 para adicionar' ou '2 para voltar ao menu')\n")
+					leia(opcaoUsuario)
 							
 					// Tomada de decisão
 					se (opcaoUsuario == "1")
-						{
-						carrinho = carrinho + 1
+					{
+						carrinho++
 						escreva("Produto adicionado ao carrinho. Total no carrinho: ", carrinho, "\n")
-						//cod carrinho
-						}
+						u.aguarde(1000)
+						limpa()
+						x = carrinhoDeCompras(1, 8)
+					}
 					senao se (opcaoUsuario == "2")
 					{
-							escreva("Voltando ao menu inicial...\n")
-							u.aguarde(2000)
-							// cod para voltar ao menu inicial
-							pare
+						limpa()
+						escreva("Voltando ao menu inicial...\n")
+						u.aguarde(2000)
+						limpa()
+						menuPrincipal()
+						x = falso
 					}
 					senao
 					{
-								escreva("Opção inválida, tente novamente.\n")
+						escreva("Opção inválida, tente novamente.\n")
+						limpa()
+						x = falso
+						menuPrincipal()
 					}
 				}
-					caso 2:
+				pare
 				
-						inteiro PataDegato = -1	
+				caso 2:
+				
+					inteiro PataDegato = -1	
 		
-						// Inicia o modo gráfico e define as dimensões da janela
-						g.iniciar_modo_grafico(verdadeiro)
-						g.definir_dimensoes_janela(300, 300)
+					// Inicia o modo gráfico e define as dimensões da janela
+					g.iniciar_modo_grafico(verdadeiro)
+					g.definir_dimensoes_janela(300, 300)
 						
-						// Carrega a imagem do produto
-						PataDegato = g.carregar_imagem("PataDegato.jpg")
+					// Carrega a imagem do produto
+					PataDegato = g.carregar_imagem("PataDegato.jpg")
 						
-						// Exibe os dados no console enquanto a imagem está aberta
-						escreva("\n┎┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┒\n")
-						escreva("\tNome:      Cookie Pata de Gato\n\n")
-						escreva("\tPreço:     R$5.00 \n\n")
-						escreva("\tDescrição: Cookie de chocolate com pedaços de chocolate branco, moldado em formato de pata de gato\n\t\t    Crocante por fora e macio por dentro.")
-						escreva("\n┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┚\n")
-						// Loop principal para renderizar a imagem e capturar a decisão do usuário
-						enquanto(verdadeiro)
+					// Exibe os dados no console enquanto a imagem está aberta
+					escreva("\n┎┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┒\n")
+					escreva("\tNome:      Cookie Pata de Gato\n\n")
+					escreva("\tPreço:     R$5.00 \n\n")
+					escreva("\tDescrição: Cookie de chocolate com pedaços de chocolate branco, moldado em formato de pata de gato\n\t\t    Crocante por fora e macio por dentro.")
+					escreva("\n┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┚\n")
+					// Loop principal para renderizar a imagem e capturar a decisão do usuário
+					enquanto(x == verdadeiro)
+					{
+						// Limpa a tela e desenha a imagem
+						g.definir_cor(g.COR_BRANCO)
+						g.limpar()
+						g.desenhar_imagem(0, 0, PataDegato)
+						g.renderizar()
+							
+						// decisão do usuário
+						escreva("\n   Deseja adicionar o produto ao carrinho ou voltar ao menu inicial? \n\t(digite '1 para adicionar' ou '2 para voltar ao menu')\n")
+						leia(opcaoUsuario)
+							
+						// Tomada de decisão
+						se (opcaoUsuario == "1")
 						{
-							// Limpa a tela e desenha a imagem
-							g.definir_cor(g.COR_BRANCO)
-							g.limpar()
-							g.desenhar_imagem(0, 0, PataDegato)
-							g.renderizar()
-							
-							// decisão do usuário
-							escreva("\n   Deseja adicionar o produto ao carrinho ou voltar ao menu inicial? \n\t(digite '1 para adicionar' ou '2 para voltar ao menu')\n")
-							leia(opcaoUsuario)
-							
-							// Tomada de decisão
-							se (opcaoUsuario == "1")
-							{
-								carrinho = carrinho + 1
-								escreva("Produto adicionado ao carrinho. Total no carrinho: ", carrinho, "\n")
-								//cod carrinho
-							}
-							senao se (opcaoUsuario == "2")
-							{
-								escreva("Voltando ao menu inicial...\n")
-								u.aguarde(2000)
-								// cod para voltar ao menu inicial
-								pare
-							}
-							senao
-							{
-								escreva("Opção inválida, tente novamente.\n")
-							}
+							carrinho++
+							escreva("Produto adicionado ao carrinho. Total no carrinho: ", carrinho, "\n")
+							u.aguarde(1000)
+							limpa()
+							x = carrinhoDeCompras(1, 5)
 						}
+						senao se (opcaoUsuario == "2")
+						{
+							limpa()
+							escreva("Voltando ao menu inicial...\n")
+							u.aguarde(2000)
+							limpa()
+							menuPrincipal()
+							x = falso
+						}
+						senao
+						{
+							escreva("Opção inválida, tente novamente.\n")
+							limpa()
+							x = falso
+							menuPrincipal()
+						}
+					}
+					pare
+					
 					caso 3:
 				
 						inteiro Meowberry = -1	
@@ -795,7 +976,7 @@ programa
 						escreva("\tDescrição: Muffin de mirtilo com um toque de limão,\n  servido quentinho. Uma explosão de sabor a cada mordida\n")
 						escreva("\n┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┚\n")
 						// Loop principal para renderizar a imagem e capturar a decisão do usuário
-						enquanto(verdadeiro)
+						enquanto(x == verdadeiro)
 						{
 							// Limpa a tela e desenha a imagem
 							g.definir_cor(g.COR_BRANCO)
@@ -810,37 +991,120 @@ programa
 							// Tomada de decisão
 							se (opcaoUsuario == "1")
 							{
-								carrinho = carrinho + 1
+								carrinho++
 								escreva("Produto adicionado ao carrinho. Total no carrinho: ", carrinho, "\n")
-								//cod carrinho
+								u.aguarde(1000)
+								limpa()
+								x = carrinhoDeCompras(1, 7)
 							}
 							senao se (opcaoUsuario == "2")
 							{
+								limpa()
 								escreva("Voltando ao menu inicial...\n")
 								u.aguarde(2000)
-								// cod para voltar ao menu inicial
-									pare
+								limpa()
+								menuPrincipal()
+								x = falso
 							}
 							senao
 							{
 								escreva("Opção inválida, tente novamente.\n")
+								limpa()
+								x = falso
+								menuPrincipal()
 							}
 						}
+					pare
+					
 					caso contrario:
 						escreva("\nOpção inválida! Voltando ao menu")
 						menuPrincipal()
-						pare
+					pare
 				}
 		}
+
+	funcao logico carrinhoDeCompras(inteiro totalCarrinho, inteiro totalValor){
+			
+		cadeia opcao, confirmar
+
+		valorFinal += totalValor
+		quantTotal += totalCarrinho
+
+		inteiro guardaValor = valorFinal
+		inteiro guardaQuant = quantTotal
+
+		escreva("\t\t♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥\n")
+		escreva("\t\t♥♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♥\n")
+		escreva("\t\t♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥\n")
+		escreva("\t\t♥♡♡    ∧,,∧              /^--^\\     /^--^\\     /^--^\\                ∧,,∧    ♡♡♥\n")
+		escreva("\t\t♥♡♡  =( o.o)=            \\    /     \\    /     \\    /              =(~.~ )=  ♡♡♥\n")
+		escreva("\t\t♥♡♡   /  />☕            /      \\   /      \\   /      \\             >☕<-  \\   ♡♡♥\n")
+		escreva("\t\t♥♡♡  |      |          |        | |        | |        |            |      |  ♡♡♥\n")
+		escreva("\t\t♥♡♡   \\    /            \\__  __/   \\__  __/   \\__  __/             \\      /  ♡♡♥\n")
+		escreva("\t\t♥♡♡█|^|^|^|^|^|^|^|^|^|^|^|^\\ \\^|^|^|^/ /^|^|^|^|^\\ \\^|^|^|^|^|^|^|^|^|^|^|^█♡♡♥\n")
+		escreva("\t\t♥♡♡█| | | | | | | | | | | | |\\ \\| | |/ /| | | | | |\\ \\| | | | | | | | | | | █♡♡♥\n")
+		escreva("\t\t♥♡♡█| | | | | | | | | | | | / / | | |\\ \\| | | | | |/ /| | | | | | | | | | | █♡♡♥\n")
+		escreva("\t\t♥♡♡█| | | | | | | | | | | | \\/| | | | \\/| | | | | |\\/ | | | | | | | | | | | █♡♡♥\n")
+		escreva("\t\t♥♡♡█╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫█♡♡♥\n")
+		escreva("\t\t♥♡♡█╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫╫█♡♡♥\n")
+		escreva("\t\t♥♡♡█| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | █♡♡♥\n")
+		escreva("\t\t♥♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♥\n")
+		escreva("\t ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥\n")
+		escreva("\t ♥♡♡  ,---------.                                  ;,' ,---------.                                ♡♡♥\n")
+		escreva("\t ♥♡♡ ' .-------./    ,---.  ,--------.      _o_   :;' '  .------./    ,---.    ,------.  ,------. ♡♡♥\n")
+		escreva("\t ♥♡♡ |  |           /  O  \\ '--.  .--'  ,-.'---`.__ ; |  |           /  O  \\   |  .---'  |  .---' ♡♡♥\n")
+		escreva("\t ♥♡♡ |  | ^¬.¬^    |  .-.  |   |  |    ((j`=====',-'  |  |≽^•w•^≼   |  .-.  |  |  `--,   |  `--,  ♡♡♥\n")
+		escreva("\t ♥♡♡ '  '------'\\  |  | |  |   |  |     `-\\     /     '  '------'\\  |  | |  |  |  |`     |  `---. ♡♡♥\n")
+		escreva("\t ♥♡♡  `---------'  `--' `--'   `--'        `-=-'       `---------'  `--' `--'  `--'      `------' ♡♡♥\n")
+		escreva("\t ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥\n")
+		escreva("\t ♥♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♥\n")
+		escreva("\t ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥\n\n")
+
+		escreva("Deseja adicionar algo mais no carrinho (sim / nao) : ")
+		leia(opcao)
+
+		se(opcao == "sim"){
+			limpa()
+			escreva("Voltando ao menu principal")
+			u.aguarde(1000)
+			limpa()
+			menuPrincipal()
+			retorne verdadeiro
+		}
+		se(opcao == "nao"){
+			escreva("\n\nFinalizando as compras\n\n")
+			u.aguarde(2000)
+			limpa()
+			escreva("Valor total é: ", valorFinal, " reais\n")
+			escreva("A quantidade de produtos total é: ", quantTotal, "\n\n")
+
+			escreva("Deseja confirmar a compra (sim / nao): ")
+			leia(confirmar)
+
+			se(confirmar == "sim"){
+				escreva("Compra realizada com sucesso!\n\t Volte Sempre!")
+				u.aguarde(1000)
+				retorne falso
+			}
+			se(confirmar == "nao"){
+				limpa()
+				escreva("Voltando ao carrinho")
+				u.aguarde(1000)
+				limpa()
+				carrinhoDeCompras(guardaValor, guardaQuant)
+			}			
+		}
+		retorne falso
+	}
 }
 /* $$$ Portugol Studio $$$ 
  * 
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 10042; 
- * @DOBRAMENTO-CODIGO = [431, 512, 671];
- * @PONTOS-DE-PARADA = 304;
+ * @POSICAO-CURSOR = 751; 
+ * @DOBRAMENTO-CODIGO = [21, 34, 118, 194, 239, 471, 641, 832];
+ * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
