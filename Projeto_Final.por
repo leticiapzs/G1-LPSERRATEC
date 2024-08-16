@@ -841,7 +841,7 @@ programa
  * @POSICAO-CURSOR = 10042; 
  * @DOBRAMENTO-CODIGO = [431, 512, 671];
  * @PONTOS-DE-PARADA = 304;
- * @SIMBOLOS-INSPECIONADOS = {vetor, 13, 8, 5};
+ * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
